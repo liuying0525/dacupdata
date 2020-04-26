@@ -1,0 +1,280 @@
+
+  <view>
+    
+  <block  wx:if="{{$userinfo_alert$zt}}">
+    <view class="wrap">
+      <view class="alert">
+        <view class="alert_text">{{$userinfo_alert$text_}}</view>
+        <button class="alert_btn" open-type="getUserInfo" bindgetuserinfo="$userinfo_alert$bindGetUserInfo">确定</button>
+      </view>
+    </view>
+  </block>
+
+    
+  <block  wx:if="{{$alert_l$zt}}">
+    <view class="wrap">
+      <view class="alert">
+        <view class="alert_text">{{$alert_l$text_}}</view>
+        <button class="alert_btn" open-type="getPhoneNumber" bindgetphonenumber="$alert_l$bindalertInfo">确定</button>
+      </view>
+    </view>
+  </block>
+
+    <view class="container" bindtap="ss_clear">
+      
+  <!--搜索-->
+  <view class="index_ss_content">
+    <view class="index_ss_header">
+      <image class="index_input_ss" src="{{$sousuo$url_link?$sousuo$url_link+'index_ss.png':''}}" mode="widthFix"/>
+      <text class="index_ss" bindtap="$sousuo$ss_btn" placeholder-class="placeholder" bindblur="$sousuo$ss_clear" placeholder="">请输入品牌或车型</text>
+      <view class="index_gps" bindtap="$sousuo$dingwei">
+        <image class="index_gps_img" src="{{$sousuo$url_link?$sousuo$url_link+'index_gps_icon.png':''}}" mode="widthFix"/>
+        {{$sousuo$gps_wz}}
+      </view>
+    </view>
+  </view>
+
+      <view class="index_lb">
+        <swiper indicator-dots="{{indicator}}" autoplay="{{autoplay}}" interval="3000" duration="500">
+          <block  wx:for="{{imgUrls}}" wx:key="key">
+            <swiper-item>
+              <image src="{{item.imgurl}}" class="slide-image" data-adtype="{{item.adtype}}" data-activityJO="{{item.activityJO}}" data-advid="{{item.advid}}" data-url="{{item.url}}" bindtap="tiaozhuan" mode="aspectFill"/>
+            </swiper-item>
+            <!-- <swiper-item wx:if='{{item.adtype!=url}}'>2
+              <image src="{{item.imgurl}}" class="slide-image" bindtap="tiaourl({{item.url}})" mode="aspectFill"/>
+            </swiper-item> -->
+          </block>
+        </swiper>
+      </view>
+      <!--条件选车-->
+      
+  <!--标签-->
+  <view class="index_list_table" bindtap="$bq1$click_">
+    <view class="index_list_left">
+      <image class="index_tjxc_img" src="{{$bq1$img_link}}" mode="widthFix"/>
+      <text class="index_tjxc_tj">{{$bq1$text_zhi}}</text>
+    </view>
+    <view class="index_list_right">
+      <text class="index_tjxc_tj index_tjxc_gd">{{$bq1$right_zhi}}</text>
+      <image class="index_jt_img" src="{{$bq1$url_link?$bq1$url_link+'index_jt.png':''}}" mode="widthFix"/>
+    </view>
+  </view>
+
+      <view class="index_sx">
+        <view class="index_sx_content">
+          <view class="index_sx_list">车价</view>
+          <view class="index_sx_list" data-id="1" bindtap="tjxc_cj">30万以下</view>
+          <view class="index_sx_list" data-id="2" bindtap="tjxc_cj">30-40万</view>
+          <view class="index_sx_list" data-id="3" bindtap="tjxc_cj">40-50万</view>
+          <view class="index_sx_list" data-id="4" bindtap="tjxc_cj">50-60万</view>
+          <view class="index_sx_list" data-id="5" bindtap="tjxc_cj">60万以上</view>
+        </view>
+        <view class="index_sx_content">
+          <view class="index_sx_list">首付</view>
+          <view class="index_sx_list" data-id="1" bindtap="tjxc_sf">8万以下</view>
+          <view class="index_sx_list" data-id="2" bindtap="tjxc_sf">8-12万</view>
+          <view class="index_sx_list" data-id="3" bindtap="tjxc_sf">12-16万</view>
+          <view class="index_sx_list" data-id="4" bindtap="tjxc_sf">16-20万</view>
+          <view class="index_sx_list" data-id="5" bindtap="tjxc_sf">20万以上</view>
+        </view>
+        <view class="index_sx_content">
+          <view class="index_sx_list">月供</view>
+          <view class="index_sx_list" data-id="1" bindtap="tjxc_yg">0.6万以下</view>
+          <view class="index_sx_list" data-id="2" bindtap="tjxc_yg">0.6-0.8万</view>
+          <view class="index_sx_list" data-id="3" bindtap="tjxc_yg">0.8-1万</view>
+          <view class="index_sx_list" data-id="4" bindtap="tjxc_yg">1-1.2万</view>
+          <view class="index_sx_list" data-id="5" bindtap="tjxc_yg">1-2万以上</view>
+        </view>
+      </view>
+      <view class="index_hd_bt" bindtap="shouquan"  wx:if="{{inde!=''?false:true}}">
+        <view class="index_list_left index_zy_left">
+          <image class="index_jt_img index_zy_img" src="{{url_link?url_link+'index_zy.png':''}}" mode="widthFix"/>
+          <text class="index_tjxc_tj index_zy_text" wx:if="{{login_wz==''?false:true}}">{{login_wz}}</text>
+        </view>
+        <!--  -->
+        <view class="index_list_zhong" wx:if="{{!login_wz}}">
+          <swiper class=" index_zy_textpot" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" vertical="{{true}}" duration="{{duration}}" circular="true">
+            <block wx:for="{{posert}}">
+              <swiper-item class="swiper_item_piti" catchtouchmove="stopSwiper">
+                {{item}}
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="index_list_right index_zy_right" wx:if="{{login_jt_zt}}">
+          <image class="index_jt_img index_zy_right_img" src="{{url_link?url_link+'index_jt_fff.png':''}}" mode="widthFix"/>
+        </view>
+      </view>
+      <view class="index_hd_bt" bindtap="dingd" wx:if="{{inde==''?false:true}}">
+        <view class="index_list_left index_zy_left">
+          <image class="index_jt_img index_zy_img" src="{{url_link?url_link+'index_zy.png':''}}" mode="widthFix"/>
+          <text class="index_tjxc_tj index_zy_text">{{inde.carModelName}}</text>
+        </view>
+        <view class="index_list_rights ">
+          {{inde.orderstatue}}
+        </view>
+      </view>
+      <!--贴息专区-->
+      
+  <!--标签-->
+  <view class="index_list_table" bindtap="$bq2$click_">
+    <view class="index_list_left">
+      <image class="index_tjxc_img" src="{{$bq2$img_link}}" mode="widthFix"/>
+      <text class="index_tjxc_tj">{{$bq2$text_zhi}}</text>
+    </view>
+    <view class="index_list_right">
+      <text class="index_tjxc_tj index_tjxc_gd">{{$bq2$right_zhi}}</text>
+      <image class="index_jt_img" src="{{$bq2$url_link?$bq2$url_link+'index_jt.png':''}}" mode="widthFix"/>
+    </view>
+  </view>
+
+
+      <view class="index_heng_content">
+        <view class="index_heng">
+          <view class="index_heng_list" wx:for="{{tiexi}}" wx:key="key">
+            <image class="index_heng_list_img" src="{{item.interestdiscountimgurl}}" bindtap="rxhc_btn" mode="widthFix" data-wpyrxhc_btn-a="{{item.carmodelid}}" data-wpyrxhc_btn-b="tiexi"/>
+          </view>
+        </view>
+      </view>
+      <!--热销好车-->
+      
+  <!--标签-->
+  <view class="index_list_table" bindtap="$bq3$click_">
+    <view class="index_list_left">
+      <image class="index_tjxc_img" src="{{$bq3$img_link}}" mode="widthFix"/>
+      <text class="index_tjxc_tj">{{$bq3$text_zhi}}</text>
+    </view>
+    <view class="index_list_right">
+      <text class="index_tjxc_tj index_tjxc_gd">{{$bq3$right_zhi}}</text>
+      <image class="index_jt_img" src="{{$bq3$url_link?$bq3$url_link+'index_jt.png':''}}" mode="widthFix"/>
+    </view>
+  </view>
+
+      <view class="index_heng_content">
+        <view class="index_heng">
+          <view class="index_heng_list index_rm_list" wx:for="{{rx_imgurl}}" wx:key="key">
+            <image class="index_heng_list_img index_rm_img" bindtap="rxhc_btn" src="{{item.imgurl}}" mode="aspectFill" data-wpyrxhc_btn-a="{{item.carmodelid}}" data-wpyrxhc_btn-b="rexiao"/>
+            <text class="index_rm_zi">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      
+  <!--标签-->
+  <view class="index_list_table rm" bindtap="$bq4$click_">
+    <view class="index_list_left">
+      <image class="index_tjxc_img" src="{{$bq4$img_link}}" mode="widthFix"/>
+      <text class="index_tjxc_tj">{{$bq4$text_zhi}}</text>
+    </view>
+    <view class="index_list_right">
+      <text class="index_tjxc_tj index_tjxc_gd">{{$bq4$right_zhi}}</text>
+      <image class="index_jt_img" src="{{$bq4$url_link?$bq4$url_link+'index_jt.png':''}}" mode="widthFix"/>
+    </view>
+  </view>
+
+      <view class="w_login_rm">
+        <view class="w_login_rm_list" wx:for="{{rm_che}}" wx:key="key">
+          <view class="rm_logo">
+            <image src="{{item.imgurl}}" bindtap="xz_pp" style="width: 60rpx;height: 60rpx;" mode="aspectFit" data-wpyxz_pp-a="{{item.carbrandid}}"/>
+          </view>
+          <text class="rm_name">{{item.name}}</text>
+        </view>
+      </view>
+      <view class="index_list_table mi">
+        <view class="index_list_left">
+          <image class="index_tjxc_img" src="{{url_link?url_link+'index_lc.png':''}}" mode="widthFix"/>
+          <text class="index_tjxc_tj">车贷流程</text>
+        </view>
+      </view>
+      <view class="w_login_rm cd_lc_div" bindtap="xz_cx">
+        <view class="straight-liucheng_center">
+          <view class="straight-liucheng">
+            <view class="straight-bchengxu">
+              <view class="straight-li">
+                <image class="joio-img1" src="{{url_link?url_link+'sq.png':''}}" mode="widthFix"/>
+                <view class="joio-c">线上申请</view>
+              </view>
+              <view class="straight-li2">
+                <image class="joio-img1" src="{{url_link?url_link+'jiantou.png':''}}" mode="widthFix"/>
+              </view>
+              <view class="straight-li">
+                <image class="joio-img1" src="{{url_link?url_link+'goutong.png':''}}" mode="widthFix"/>
+                <view class="joio-c">顾问沟通</view>
+              </view>
+              <view class="straight-li2">
+                <image class="joio-img1" src="{{url_link?url_link+'jiantou.png':''}}" mode="widthFix"/>
+              </view>
+              <view class="straight-li">
+                <image class="joio-img1" src="{{url_link?url_link+'xin.png':''}}" mode="widthFix"/>
+                <view class="joio-c">信用评估</view>
+              </view>
+              <view class="straight-li2">
+                <image class="joio-img1" src="{{url_link?url_link+'jiantou.png':''}}" mode="widthFix"/>
+              </view>
+              <view class="straight-li">
+                <image class="joio-img1" src="{{url_link?url_link+'zhifu.png':''}}" mode="widthFix"/>
+                <view class="joio-c joio-v">支付首付</view>
+              </view>
+              <view class="straight-li2">
+                <image class="joio-img1" src="{{url_link?url_link+'jiantou.png':''}}" mode="widthFix"/>
+              </view>
+              <view class="straight-li">
+                <image class="joio-img1" src="{{url_link?url_link+'guoqi.png':''}}" mode="widthFix"/>
+                <view class="joio-c">到店提车</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+  <view>
+    <view class="{{$sidebar$sidebar_?'sidebar_yinying2':'sidebar_yinying'}}" bindtap="$sidebar$clear_yy"/>
+    <view class="{{$sidebar$sidebar_?'right_sidebar':'right_sidebar_false'}}">
+      <view class="sidebar">
+        <scroll-view class="sidebar_right" scroll-y scroll-top="{{$sidebar$scrollTop}}">
+          <view class="sidebar_bq">
+            <image class="sidebar_pp_logo" src="{{$sidebar$ppai_logo}}" mode="aspectFit"/>
+            <text class="sidebar_pp">{{$sidebar$ppai}}</text>
+          </view>
+          <view  wx:for="{{$sidebar$json_zhi.carseriesJA}}" wx:key="key">
+            <view class="sidebar_hui">
+              <text>{{item.name}}</text>
+            </view>
+            <view class="sidebar_list" wx:for="{{item.cmfcarseriesJA}}" wx:for-item="items" wx:key="key" bindtap="$sidebar$click_tz" data-wpyclick_tz-a="{{items.carseriesid}}">
+              <view class="sidebar_list_left">
+                <text class="list_left sidebar_list_title">{{items.name}}</text>
+                <text class="list_left sidebar_list_rmb">{{items.minprice/10000}}万-{{items.maxprice/10000}}万</text>
+              </view>
+              <view class="sidebar_list_right">
+                <image class="list_che" src="{{items.imgurl}}" mode="aspectFit"/>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+
+
+    </view>
+    <!-- 帮您贷款悬浮窗 -->
+    <view class="xuanfu" bindtap="borrow">
+      <text>帮您</text>
+      <text>贷款</text>
+    </view>
+    
+  <view class="table_content" style="padding-bottom:{{$leotable$btuBottom}}">
+    <view class="table_list" bindtap="$leotable$xcdk">
+      <image wx-if="{{$leotable$che}}" src="{{$leotable$che}}" mode="aspectFit" class="table_list_icon iconfont icon-dkw_xiaoxi"/>
+      新车贷款
+    </view>
+    <!--<view class="table_list" bindtap="zhizu">-->
+      <!--<image src="{{ys}}" mode="aspectFit" class="table_list_icon iconfont icon-dkw_xiaoxi"></image>-->
+      <!--直租-->
+    <!--</view>-->
+    <view class="table_list" bindtap="$leotable$my">
+      <image wx-if="{{$leotable$my}}" src="{{$leotable$my}}" mode="aspectFit" class="table_list_icon iconfont icon-dkw_xiaoxi"/>
+      我的
+    </view>
+  </view>
+
+  </view>

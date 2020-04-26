@@ -1,0 +1,111 @@
+.nav {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 24rpx;
+  padding: 0 10%;
+}
+.defaulf {
+  width: 20%;
+  line-height: 70rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.orange {
+  width: 20%;
+  line-height: 70rpx;
+  text-align: center;
+  border-bottom: 4rpx #00c7ae solid;
+  color: #00c7ae;
+  font-weight: bold;
+}
+.coupons {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 50rpx;
+  background: #f0f1f5;
+}
+.coupon {
+  width: 100%;
+  height: 157rpx;
+  /*background: #fff;*/
+  /*background:pink;*/
+  margin-bottom: 30rpx;
+  -webkit-box-shadow: 0 0 16rpx 6rpx rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 16rpx 6rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 16rpx 6rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+.coupon1 {
+  background: url("https://webapi.dongzhengafc.com:9503/images/dhSec01.png") no-repeat center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.coupon2 {
+  background: url("https://webapi.dongzhengafc.com:9503/images/dhSec02.png") no-repeat center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.coupon3 {
+  background: url("https://webapi.dongzhengafc.com:9503/images/dhSec03.png") no-repeat center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.couponL {
+  flex: 8;
+  padding: 12rpx 40rpx 12rpx 40rpx ;
+  background: url("https://webapi.dongzhengafc.com:9503/images/dhSec00.png") no-repeat center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.couponL .title {
+  font-size: 28rpx;
+  color: #5c5c5c;
+}
+.couponL .time {
+  font-size: 18rpx;
+  color: #737373;
+  margin: 8rpx 0;
+}
+.couponL .limit {
+  font-size: 18rpx;
+  color: #a6a5a5;
+}
+.couponR {
+  flex: 4;
+}
+.couponR .money {
+  font-size: 42rpx;
+  color: #fff;
+  margin: 30rpx auto 16rpx;
+  text-align: center;
+}
+.couponR .btn {
+  font-size: 16rpx;
+  color: #f06464;
+  height: 30rpx;
+  line-height: 30rpx;
+  width: 126rpx;
+  background: #fff;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+.noData {
+  width: 500rpx;
+  margin: 300rpx auto;
+}
+.noData image {
+  display: block;
+  height: 252rpx;
+  width: 309rpx;
+  margin: 0 auto;
+}
+.noData .textInfo {
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 120rpx;
+}

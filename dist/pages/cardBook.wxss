@@ -1,0 +1,56 @@
+.cardBook {
+  padding-top: 110rpx;
+}
+.cardBook .bookBox {
+  height: 700rpx;
+  width: 647rpx;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 57rpx;
+  -webkit-box-shadow: 0 0 16rpx 6rpx rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 16rpx 6rpx rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 16rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+.cardBook .bookTitle {
+  font-size: 28rpx;
+  color: #4b4b4b;
+  text-align: center;
+  margin-bottom: 51rpx;
+}
+.cardBook .textWords {
+  font-size: 24rpx;
+  color: #4b4b4b;
+}
+.cardBook .textInfo {
+  font-size: 22rpx;
+  color: #767373;
+  margin-top: 55rpx;
+}
+.cardBook .nextBtn {
+  width: 545rpx;
+  height: 72rpx;
+  font-size: 28rpx;
+  line-height: 72rpx;
+  text-align: center;
+  background: #6044cb;
+  color: #fff;
+  -webkit-border-radius: 6rpx;
+  -moz-border-radius: 6rpx;
+  border-radius: 6rpx;
+  margin: 50rpx auto 0;
+}
+.cardBook .emailInput {
+  width: 545rpx;
+  height: 72rpx;
+  font-size: 24rpx;
+  line-height: 72rpx;
+  text-align: center;
+  -webkit-border-radius: 6rpx;
+  -moz-border-radius: 6rpx;
+  border-radius: 6rpx;
+  margin: 50rpx auto 0;
+  background: #dce0eb;
+  color: #000;
+}

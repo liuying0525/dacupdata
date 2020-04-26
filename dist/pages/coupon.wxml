@@ -1,0 +1,26 @@
+
+  <view>
+    <view class="nav">
+      <view class="{{state===1?'orange':'defaulf'}}" bindtap="changeState" data-wpychangestate-a="{{1}}">未使用</view>
+      <view class="{{state===2?'orange':'defaulf'}}" bindtap="changeState" data-wpychangestate-a="{{2}}">已使用</view>
+      <view class="{{state===3?'orange':'defaulf'}}" bindtap="changeState" data-wpychangestate-a="{{3}}">已过期</view>
+    </view>
+    <view class="coupons"  wx:if="{{!noData_show}}">
+      <view class="coupon" wx:for="{{list}}" bindtap="goUse" data-wpygouse-a="{{item.id}}">
+        <view class="couponL">
+          <view class="title">{{item.couponName}}</view>
+          <view class="time">使用期限：{{item.startDate}}-{{item.endDate}}</view>
+          <view class="limit">适用范围：在申请贷款的红旗店内,消费精品、工时费、延保、装潢等,均可抵扣{{item.couponAmount}}元.</view>
+        </view>
+        <view class="couponR {{'coupon'+state}}">
+          <view class="money">¥{{item.couponAmount}}</view>
+          <view class="btn" wx:if="{{state===1}}">立即使用</view>
+          <view class="btn" wx:if="{{state===2}}">已使用</view>
+        </view>
+      </view>
+    </view>
+    <view class="noData"  wx:if="{{noData_show}}">
+      <image src="{{url_link?url_link + '/noData.png':''}}" mode="aspectFit"/>
+      <view class="textInfo">您暂无优惠券哦</view>
+    </view>
+  </view>

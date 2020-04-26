@@ -1,0 +1,29 @@
+.informationC view,
+.informationC input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.informationC .btnlist {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 150rpx;
+}
+.informationC .btnlist .btn {
+  width: 288rpx;
+  height: 237rpx;
+  border-radius: 7rpx;
+  background-image: linear-gradient(#7f83f2, #5c45c3);
+  align-items: center;
+  color: #fff;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  padding-top: 48rpx;
+  line-height: 108rpx;
+}
+.informationC .aftericon {
+  height: 76rpx;
+  width: 76rpx;
+}

@@ -1,0 +1,15 @@
+
+    <view class="couponDetail">
+        <view class="codeImgBox">
+            <image class="usedImg" src="{{url_link?url_link+'/dhSec11.png':''}}"  wx:if="{{couponInfo.status==2}}"/>
+            <image class="codeImg {{couponInfo.status==2?'used':''}}" src="{{'data:image/png;base64,'+couponInfo.qrCodeImg}}"/>
+            <view class="codeNum {{couponInfo.status==2?'used':''}}">卡券编号:No.{{couponInfo.couponNo}}</view>
+        </view>
+        <view class="couponInfos">
+            <view class="couponInfo">卡券名称: {{couponInfo.couponName }}</view>
+            <view class="couponInfo">抵扣金额: {{couponInfo.couponAmount}}元</view>
+            <view class="couponInfo">使用时间: {{couponInfo.startDate}}~{{couponInfo.endDate}}</view>
+            <view class="couponInfo">适用范围: 在 <text style="color: rgb(245,37,37);">{{couponInfo.store}}</text>店内，消费精品、工时费、延保、装潢等，均可抵扣{{couponInfo.couponAmount}}元</view>
+            <view class="warnInfo">*本活动最终解释权归上海东正汽车金融股份有限公司所有</view>
+        </view>
+    </view>

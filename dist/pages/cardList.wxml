@@ -1,0 +1,41 @@
+
+  <view class="earlyList">
+    <view class="titles">
+      <view class="title {{state==0?'activeTitle':''}}" bindtap="changeState" data-wpychangestate-a="0">受理中</view>
+      <view class="title {{state==1?'activeTitle':''}}" bindtap="changeState" data-wpychangestate-a="1">已受理</view>
+      <view class="title {{state==2?'activeTitle':''}}" bindtap="changeState" data-wpychangestate-a="2">已取消</view>
+    </view>
+    <view class="earlyBox"  wx:for="{{list}}" wx:key="id">
+      <view class="earlyTime">提交时间 ：{{item.createTime}}</view>
+      <view class="earlyItem">
+        <!--<view class="textImage">-->
+          <!--<image src="{{item.cardnumurl}}" mode="aspectFit"></image>-->
+        <!--</view>-->
+        <view class="textItem">姓名 : {{item.name}}</view>
+        <view class="textItem">手机号 : {{item.telephone}}</view>
+        <view class="textItem">新卡卡号 : {{item.bankCardNew}}</view>
+        <view class="textItem">合同号：{{item.contractNo}}</view>
+        <view class="textItem">合同信息 : {{item.carInfo}}</view>
+        <view class="textItem" wx:if="{{state==1}}">审批留言：</view>
+        <!-- <view class="textItem" style="margin: 0;height:80rpx;" wx:if="{{item.status == 0}}"> -->
+          <view class="textItem" style="margin: 0;height:80rpx;" wx:if="{{state == 0}}">
+          <text class="cancelBtn" bindtap="cancelSubmit" data-wpycancelsubmit-a="{{item.id}}">取消申请</text>
+          <!--<text class="cancelBtn editBtn" bindtap="uploadBook({{item.id}})" wx:if="{{!item.authorizationImg}}">上传授权书</text>-->
+          <text class="cancelBtn getAgain" bindtap="getAgain" data-wpygetagain-a="{{item.id}}">重新获取协议</text>
+        </view>
+        <view class="itemState">
+          <image src="{{url_link?url_link+ states[state]:''}}"/>
+        </view>
+      </view>
+      <view class="cancelReason" wx:if="{{state == 2}}">
+        <view class="textItem">取消类型  ：  {{item.cancelTypeStr}}</view>
+        <view class="textItem" style="margin-top: 28rpx;" wx:if="{{item.cancelType==2}}">取消原因  ：  {{item.cancelReason}}</view>
+      </view>
+    </view>
+    <view class="noData"  wx:if="{{noData_show}}">
+      <image src="{{url_link?url_link + '/noData.png':''}}" mode="aspectFit"/>
+      <!-- <view class="textInfo">啊哦，暂无记录~</view> -->
+    </view>
+  </view>
+  <!-- <view class="createOne {{iphoneX?'createOnePro':''}}" bindtap="add" wx:if="{{!existProcessing}}"><text class="addIcon">+</text>新建申请</view> -->
+   <view class="createOne {{iphoneX?'createOnePro':''}}" bindtap="add"><text class="addIcon">+</text>新建申请</view>

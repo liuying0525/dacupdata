@@ -1,0 +1,82 @@
+.sf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  color: #555555;
+  line-height: 140rpx;
+  font-size: 28rpx;
+  background: #fff;
+  border-bottom: 1rpx #eee solid;
+  letter-spacing: 2rpx;
+}
+.zho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.joio-img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+}
+.di {
+  transform: scale(-1, 1);
+  margin-left: 20rpx;
+  font-size: 40rpx;
+}
+.zxkf {
+  width: 90%;
+  line-height: 78rpx;
+  background: #5c45c3;
+  color: #fff;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+  margin-top: 100rpx;
+}
+.info-cont {
+  border-top: solid 1px #f0f0f0;
+  padding-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.infoMain {
+  border-bottom: solid 1px #f0f0f0;
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+}
+.info-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  border-top: solid 1px #f0f0f0;
+}
+.infotext {
+  display: flex;
+  align-items: center;
+}
+.tou {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.info-motto {
+  margin: 0 20rpx;
+  color: #888;
+}
+.buttonExit {
+  margin: 0 40rpx;
+}

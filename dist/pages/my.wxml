@@ -1,0 +1,145 @@
+
+  <view class="pose">
+     
+  <block  wx:if="{{$userinfo_alert$zt}}">
+    <view class="wrap">
+      <view class="alert">
+        <view class="alert_text">{{$userinfo_alert$text_}}</view>
+        <button class="alert_btn" open-type="getUserInfo" bindgetuserinfo="$userinfo_alert$bindGetUserInfo">确定</button>
+      </view>
+    </view>
+  </block>
+
+      <block>
+          
+    <view class="getCoupon"  wx:if="{{$get_coupon$couponShow}}">
+        <view class="couponBox">
+            <view class="closeBtn" bindtap="$get_coupon$closeCoupon" data-com-index="{{undefined}}">×</view>
+            <view class="couponTitle">{{couponInfo.amount}}元专属抵扣券已到账</view>
+            <view class="coupon">
+                <view class="couponL">
+                    <view class="title">红旗享好礼抵扣券</view>
+                    <view class="time">使用期限：{{couponInfo.startDate }}-{{couponInfo.endDate}}</view>
+                    <view class="limit">适用范围：在申请贷款的红旗店内,消费精品、工时费、延保、装潢等,均可抵扣{{couponInfo.amount}}元</view>
+                </view>
+                <view class="couponR">
+                    <view class="money">¥{{couponInfo.amount}}</view>
+                </view>
+            </view>
+            <view class="stateText">已放入“我的-我的卡券”中</view>
+            <view class="seeBtn" bindtap="$get_coupon$goCoupons" data-com-index="{{undefined}}">立即查看</view>
+        </view>
+    </view>
+
+      </block>
+  <!--<alert_l v-on:childFn="alert_tel" text_zhi="东正金融请求授权手机号"></alert_l>-->
+    <view class="my_header">
+      <image class="my_header_img" src="{{avatarurl}}"/>
+      <view class="my_header_jt {{!showLogin ? 'my_header_jt_spe' : ''}}" bindtap="myprofile">
+          <view>{{nickname}}<text class="iconfont icon-jiantou"/></view>
+          <view>{{parent_data.login_phone}}</view>
+      </view>
+       <view class="my_header_yb" bindtap="goSecLogin"  wx:if="{{showLogin&&loginData}}">登录东正账号<text class="iconfont icon-jiantou" style="font-size: 24rpx;"/>
+        </view>
+    </view>
+    <view class="my_table">
+      <view class="my_table_nr my_left" bindtap="wddd">
+        <!-- <view class="my_table_nr_text_x">{{orderNum}}<text class="my_x_zi">个</text></view> -->
+        <image class="my_icon_table_img" src="{{url_link?url_link + 'myorder@3x.png':''}}" mode="aspectFit"/> 
+        <view class="my_table_nr_text_d">我的订单</view>
+        <view class="my_gang"/>
+      </view>
+      <view class="my_table_nr my_right" bindtap="sccl">
+        <!-- <view class="my_table_nr_text_x">{{collectionNum}}<text class="my_x_zi">个</text></view> -->
+        <image class="my_icon_table_img collectcar" src="{{url_link?url_link + 'collectcar@3x.png':''}}" mode="aspectFit"/> 
+        <view class="my_table_nr_text_d">收藏车辆</view>
+      </view>
+    </view>
+    <view class="my_icon_item">
+      <view class="my_icon_item_top">
+        <view class="my_icon_title"> 贷后服务</view>
+        <view class="my_icon_title_right" bindtap="repayment"  wx:if="{{!!latestRepaymentDate}}">下个还款日<text>{{latestRepaymentDate}}</text><image class="my_icon_title_img" mode="widthFix" src="{{url_link?url_link + 'index_jt.png':''}}"/></view>
+       </view>  
+      
+      <view class="my_icon_content">
+          <view class="my_icon_content_list special_list" bindtap="repayment">
+             <image class="my_icon_content_img aftericon" src="{{url_link?url_link + 'dhSec9.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text special_text">我的贷款</view>
+          </view>
+          <view class="my_icon_content_list special_list" bindtap="early">
+             <image class="my_icon_content_img aftericon" src="{{url_link?url_link + 'dhSec4.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text special_text">提前还款</view>
+          </view>
+          <view class="my_icon_content_list special_list" bindtap="informationChange">
+              <image class="my_icon_content_img aftericon" src="{{url_link?url_link + 'dhSec6.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text special_text">信息变更</view>
+          </view>
+          <view class="my_icon_content_list special_list" bindtap="indemnityPerson">
+               <image class="my_icon_content_img aftericon" src="{{url_link?url_link + 'dhSec5.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text special_text">理赔证明</view>
+          </view>
+                <view class="my_icon_content_list special_list" bindtap="settlement">
+           <image class="my_icon_content_img aftericon" src="{{url_link?url_link + 'dhSec7.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text special_text">结清材料</view>
+              <view class="tipnum" wx:if="{{!!deliveryCount}}">{{deliveryCount}}</view>
+          </view>
+      </view>
+    </view>
+    <view class="my_icon_bottomitem">
+     <view class="my_icon_title">常用功能</view>
+      <view class="my_icon_content">
+          <view class="my_icon_content_list coupon_list" bindtap="coupon">
+              <image class="my_icon_content_img" style="width:69.42rpx;" src="{{url_link?url_link + 'dhSec8.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">优惠券</view>
+              <!-- <view class="num" wx:if="{{coiling.length>0}}">{{coiling.length}}</view> -->
+              <view class="tipnum coupon" wx:if="{{!!couponCount}}">{{couponCount}}</view>
+          </view>
+          <view class="my_icon_content_list" bindtap="borrow">
+              <image class="my_icon_content_img" style="width:81.5rpx;" src="{{url_link?url_link + 'my_bz.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">帮您贷款</view>
+          </view>
+          <view class="my_icon_content_list" bindtap="calculator">
+              <image class="my_icon_content_img" style="width:49.5rpx;" src="{{url_link?url_link + 'my_jsq.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">贷款计算器</view>
+          </view>
+          <view class="my_icon_content_list" bindtap="loanprocess">
+              <image class="my_icon_content_img" style="width:59.16rpx;" src="{{url_link?url_link + 'my_dk.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">贷款流程</view>
+          </view>
+      </view>
+      <view class="my_icon_content">
+          <view class="my_icon_content_list" bindtap="opinion">
+              <image class="my_icon_content_img" style="width:59.16rpx" src="{{url_link?url_link + 'my_yj.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">意见反馈</view>
+          </view>
+          <view class="my_icon_content_list" bindtap="help">
+              <image class="my_icon_content_img" src="{{url_link?url_link + 'my_bzzx.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">帮助中心</view>
+          </view>
+          <view class="my_icon_content_list" bindtap="aboutme">
+              <image class="my_icon_content_img" src="{{url_link?url_link + 'my_about.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">关于我们</view>
+          </view>
+          <view class="my_icon_content_list" bindtap="tap_tel">
+              <image class="my_icon_content_img" src="{{url_link?url_link + 'my_lx.png':''}}" mode="aspectFit"/>
+              <view class="my_icon_content_text">联系我们</view>
+          </view>
+      </view>
+    </view>  
+    
+  <view class="table_content" style="padding-bottom:{{$leotable$btuBottom}}">
+    <view class="table_list" bindtap="$leotable$xcdk">
+      <image wx-if="{{$leotable$che}}" src="{{$leotable$che}}" mode="aspectFit" class="table_list_icon iconfont icon-dkw_xiaoxi"/>
+      新车贷款
+    </view>
+    <!--<view class="table_list" bindtap="zhizu">-->
+      <!--<image src="{{ys}}" mode="aspectFit" class="table_list_icon iconfont icon-dkw_xiaoxi"></image>-->
+      <!--直租-->
+    <!--</view>-->
+    <view class="table_list" bindtap="$leotable$my">
+      <image wx-if="{{$leotable$my}}" src="{{$leotable$my}}" mode="aspectFit" class="table_list_icon iconfont icon-dkw_xiaoxi"/>
+      我的
+    </view>
+  </view>
+
+  </view>

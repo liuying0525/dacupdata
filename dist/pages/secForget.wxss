@@ -1,0 +1,98 @@
+.secForget .header {
+  margin: 85rpx 0 85rpx;
+}
+.secForget .header image {
+  display: block;
+  height: 125rpx;
+  width: 125rpx;
+  margin: 0 auto;
+}
+.secForget .inputBox {
+  height: 70rpx;
+  width: 100%;
+  padding: 0 40rpx;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 68rpx;
+}
+.secForget .inputBox .errorInfo {
+  position: absolute;
+  color: #ff0202;
+  font-size: 22rpx;
+  text-align: right;
+  right: 40rpx;
+  bottom: -40rpx;
+}
+.secForget .inputBox input {
+  display: block;
+  margin: 0 auto;
+  height: 68rpx;
+  border: 1px solid #5c45c3;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+}
+.secForget .inputBox .codeInput {
+  display: block;
+  height: 68rpx;
+  border: 1px solid #5c45c3;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  width: 328rpx;
+  float: left;
+}
+.secForget .inputBox .codeBtn {
+  display: block;
+  height: 68rpx;
+  border: 1px solid #5c45c3;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  width: 328rpx;
+  float: left;
+  float: right;
+  width: 230rpx;
+  color: #fff;
+  background: #5c45c3;
+  padding: 0;
+  line-height: 68rpx;
+  text-align: center;
+}
+.secForget .inputBox .codeBtnNo {
+  background: #e5e5e5;
+  color: #000;
+}
+.secForget .inputBox .button {
+  margin: 0 auto;
+  height: 68rpx;
+  line-height: 68rpx;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  background: #5c45c3;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+}
+.secForget .forget {
+  float: left;
+  font-size: 26rpx;
+  color: #5c45c3;
+  border-bottom: 1px solid #5c45c3;
+}
+.secForget .register {
+  float: left;
+  font-size: 26rpx;
+  color: #5c45c3;
+  border-bottom: 1px solid #5c45c3;
+  float: right;
+}

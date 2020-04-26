@@ -1,0 +1,142 @@
+
+  <view class="testresult">
+    <view class="brand">       
+      <!-- <inputd v-on:childFn="my" value=""  wx:if="{{inpiyxiaoshi}}"></inputd> -->
+      
+  <!--搜索-->
+  <view class="index_ss_content">
+    <view class="index_ss_header" bindsubmit="$substitution$formSubmit">
+      <text class="index_input_ss iconfont icon-sousuo" bindtap="$substitution$mySelecwtc"/>
+      <input class="index_ss" placeholder-class="placeholder" placeholder="请输入品牌或车型" bindconfirm="$substitution$moisy" value="{{$substitution$userName}}"/>
+    </view>
+  </view>
+
+      
+    </view>
+    <view class="leave"/>
+    <view>
+      <view class="opg">
+        <view class="phone_one" bindtap="clickPersona">
+          <view class="phone_personal">{{firstPerson}}</view>
+          <image src="image/xila.png" class="personal_image {{selectArea ? 'rotateRight' :''}}" mode="widthFix"/>
+        </view>
+
+        <view class="phone_one" bindtap="clickPersonb">
+          <view class="phone_personal">{{firstPersonb}}</view>
+          <image src="image/xila.png" class="personal_image {{selectAreb ? 'rotateRight' :''}}" mode="widthFix"/>
+        </view>
+
+        <view class="phone_one" bindtap="clickPersonc">
+          <view class="phone_personal">{{firstPersonc}}</view>
+          <image src="image/xila.png" class="personal_image {{selectArec ? 'rotateRight' :''}}" mode="widthFix"/>
+        </view>
+
+        <view class="phone_one" bindtap="clickPersond">
+          <view class="phone_personal">{{firstPersond}}</view>
+          <image src="image/xila.png" class="personal_image {{selectAred ? 'rotateRight' :''}}" mode="widthFix"/>
+        </view>
+      </view>
+      <view class="person_box">
+        <view class="phone_select" hidden="{{selectPerson}}">
+          <view class="select_one {{_numm == 0?'add_cit':' '}}" bindtap="mySelect" data-id="0" data-num="0" data-me="默认排序">默认排序</view>
+          <view class="select_one {{_numm == 2?'add_cit':' '}}" bindtap="mySelect" data-id="1" data-num="2" data-me="车价最低">车价最低</view>
+          <view class="select_one {{_numm == 3?'add_cit':' '}}" bindtap="mySelect" data-id="2" data-num="3" data-me="首付最低">首付最低</view>
+          <view class="select_one {{_numm == 4?'add_cit':' '}}" bindtap="mySelect" data-id="3" data-num="4" data-me="月供最低">月供最低</view>
+        </view>
+        <view class="phone_select hua" hidden="{{selectPersonb}}">
+          <view class="phone_selectd_nr">
+            <view class="phone_selectd_nr_bq"/>
+            <view class="phone_selectd_nr_list {{_nums == 0?'add_citying':' '}}" data-id="0" data-num="0" bindtap="clickNumt">不限</view>
+            <view class="phone_selectd_nr_list {{_nums == 2?'add_citying':''}}" data-id="1" data-num="2" bindtap="clickNumt">30万以下</view>
+            <view class="phone_selectd_nr_list {{_nums == 3?'add_citying':''}}" data-id="2" data-num="3" bindtap="clickNumt">30-40万</view>
+            <view class="phone_selectd_nr_list {{_nums == 4?'add_citying':''}}" data-id="3" data-num="4" bindtap="clickNumt">40-50万</view>
+            <view class="phone_selectd_nr_list {{_nums == 5?'add_citying':''}}" data-id="4" data-num="5" bindtap="clickNumt">50-60万</view>
+            <view class="phone_selectd_nr_list {{_nums == 6?'add_citying':''}}" data-id="5" data-num="6" bindtap="clickNumt">60万以上</view>
+          </view>
+        </view>
+        <view class="phone_select" hidden="{{selectPersonc}}">
+          <view class="select_one" bindtap="mySelectc" data-me="品牌默认">品牌默认</view>
+          <view class="select_one" bindtap="mySelectc" data-me="宝马">宝马</view>
+          <view class="select_one" bindtap="mySelectc" data-me="奥迪">奥迪</view>
+          <view class="select_one" bindtap="mySelectc" data-me="法拉利">法拉利</view>
+        </view>
+        <scroll-view scroll-y class="phone_selectd" hidden="{{selectPersond}}" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <view class="phone_selectd_nr">
+            <view class="phone_selectd_nr_bq">车价</view>
+            <view class="phone_selectd_nr_list {{_num == 0?'add_citying':' '}}" data-id="0" data-num="0" bindtap="clickNum">不限</view>
+            <view class="phone_selectd_nr_list {{_num == 2?'add_citying':''}}" data-id="1" data-num="2" bindtap="clickNum">30万以下</view>
+            <view class="phone_selectd_nr_list {{_num == 3?'add_citying':''}}" data-id="2" data-num="3" bindtap="clickNum">30-40万</view>
+            <view class="phone_selectd_nr_list {{_num == 4?'add_citying':''}}" data-id="3" data-num="4" bindtap="clickNum">40-50万</view>
+            <view class="phone_selectd_nr_list {{_num == 5?'add_citying':''}}" data-id="4" data-num="5" bindtap="clickNum">50-60万</view>
+            <view class="phone_selectd_nr_list {{_num == 6?'add_citying':''}}" data-id="5" data-num="6" bindtap="clickNum">60万以上</view>
+          </view>
+          <view class="phone_selectd_nr">
+            <view class="phone_selectd_nr_bq">贴息标签</view>
+            <view class="phone_selectd_nr_list {{_numd == 0?'add_citying':' '}}" data-idd="0" data-num="0" bindtap="clickNumd">不限</view>
+            <view class="phone_selectd_nr_list {{_numd == 1?'add_citying':' '}}" data-idd="1" data-num="1" bindtap="clickNumd">0息</view>
+            <view class="phone_selectd_nr_list {{_numd == 2?'add_citying':' '}}" data-idd="2" data-num="2" bindtap="clickNumd">低息</view>
+          </view>
+          <view class="phone_selectd_nr">
+            <view class="phone_selectd_nr_bq">首付（万）</view>
+            <view class="phone_selectd_nr_list {{_nume == 0?'add_citying':' '}}" data-ide="0" data-num="0" bindtap="clickNume">不限</view>
+            <view class="phone_selectd_nr_list {{_nume == 1?'add_citying':''}}" data-ide="1" data-num="1" bindtap="clickNume">8万以下</view>
+            <view class="phone_selectd_nr_list {{_nume == 2?'add_citying':''}}" data-ide="2" data-num="2" bindtap="clickNume">8-12万</view>
+            <view class="phone_selectd_nr_list {{_nume == 3?'add_citying':''}}" data-ide="3" data-num="3" bindtap="clickNume">12-16万</view>
+            <view class="phone_selectd_nr_list {{_nume == 4?'add_citying':''}}" data-ide="4" data-num="4" bindtap="clickNume">16-20万</view>
+            <view class="phone_selectd_nr_list {{_nume == 5?'add_citying':''}}" data-ide="5" data-num="5" bindtap="clickNume">20万以上</view>
+          </view>
+          <view class="phone_selectd_nr">
+            <view class="phone_selectd_nr_bq">月供</view>
+            <view class="phone_selectd_nr_list {{_numa == 0?'add_citying':' '}}" data-ida="0" data-num="0" bindtap="clickNuma">不限</view>
+            <view class="phone_selectd_nr_list {{_numa == 1?'add_citying':' '}}" data-ida="1" data-num="1" bindtap="clickNuma">0.6万以下</view>
+            <view class="phone_selectd_nr_list {{_numa == 2?'add_citying':' '}}" data-ida="2" data-num="2" bindtap="clickNuma">0.6-0.8万</view>
+            <view class="phone_selectd_nr_list {{_numa == 3?'add_citying':' '}}" data-ida="3" data-num="3" bindtap="clickNuma">0.8-1万</view>
+            <view class="phone_selectd_nr_list {{_numa == 4?'add_citying':' '}}" data-ida="4" data-num="4" bindtap="clickNuma">1-1.2万</view>
+            <view class="phone_selectd_nr_list {{_numa == 5?'add_citying':' '}}" data-ida="5" data-num="5" bindtap="clickNuma">1.2万以上</view>
+          </view>
+          <view class="phone_selectd_nr">
+            <view class="phone_selectd_nr_bq">期限</view>
+            <view class="phone_selectd_nr_list {{_numb == 0?'add_citying':' '}}" data-idb="0" data-num="0" bindtap="clickNumb">不限</view>
+            <view class="phone_selectd_nr_list {{_numb == 1?'add_citying':' '}}" data-idb="1" data-num="1" bindtap="clickNumb">12期</view>
+            <view class="phone_selectd_nr_list {{_numb == 2?'add_citying':' '}}" data-idb="2" data-num="2" bindtap="clickNumb">24期</view>
+            <view class="phone_selectd_nr_list {{_numb == 3?'add_citying':' '}}" data-idb="3" data-num="3" bindtap="clickNumb">36期</view>
+          </view>
+          <view class="phone_selectd_nr xia">
+          </view>
+          <view class="d">
+            <view class="cz" bindtap="clickPersondp">重置</view>
+            <view class="qd" bindtap="clickPersondq">确定</view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="barand-one">
+        <view class="brand-list"  wx:for="{{textx}}" wx:key="key" bindtap="xz_pp" data-wpyxz_pp-a="{{item.carmodelid}}">
+          <view class="brand-list-img">
+            <image class="widget__arrow" src="{{item.thumbnailimgurl}}" mode="aspectFill">
+            </image>
+          </view>
+          <view class="brand-list-details">
+            <view class="brand-list-details1">{{item.carseriesname}}</view>
+            <view class="brand-list-details2">{{item.name}}</view>
+            <view class="brand-list-details5">
+              <text>厂家指导价<text class="brand-list-three">{{item.price / 10000}}</text>万</text>
+            </view>
+            <view class="brand-list-details3" wx:if="{{item.interest=='0'?false:true}}">
+              <text class="brand-list-textone" hidden="{{selectPersonf}}">{{item.interest==1?'0':'低'}}息</text>
+              <!-- <text  class='brand-list-texttow'>洗车卷</text> -->
+            </view>
+
+            <view class="brand-list-details4"><text class="brand-list-four">首付<text>{{item.downpayment / 10000}}</text>万</text><text class="brand-list-five">月供<text>{{item.monthlysupply|Int}}</text>元</text></view>
+          </view>
+        </view>
+        <view  wx:if="{{code=='A00006'?true:false}}">
+          <view class="kong" wx:if="{{textx.length=='0'?true:false}}">
+            <image class="kong-image1" src="{{url_link?url_link+'wen.png':''}}" mode="widthFix"/>
+            <view class="kongzi">暂未找到符合条件的车型，请更换筛选条件再试</view>
+          </view>
+        </view>
+
+      </view>
+      <view bindtap="mySelectc"/>
+    </view>
+  </view>

@@ -1,0 +1,62 @@
+
+    <view class="indemnityPerson">
+        <view class="indemnityPersonT">
+            <view class="title">个人信息填写</view>
+            <view class="textItem">
+                <text>姓名</text><input type="text" bindinput="changeValue" disabled data-name="name" placeholder="请输入你的姓名" value="{{name}}"/>
+            </view>
+            <view class="textItem">
+                <text>手机号</text><input type="text" bindinput="changeValue" disabled data-name="phone" placeholder="请输入你填写合同时的手机号" value="{{phone}}"/>
+            </view>
+            <view class="textItem">
+                <text>身份证号</text><input type="text" bindinput="changeValue" disabled data-name="IdCard" placeholder="请输入你填写合同时的身份证号" value="{{IdCard}}"/>
+            </view>
+            <!--<view class="textItem" style="margin-bottom: 50rpx;">-->
+                <!--<text>合同信息</text><input type="text" bindtap="getContracts" disabled placeholder="点击获取合同列表" value="{{contractnum}}"/>-->
+                <!--<view class="textItemInfos" wx:if="{{contract_show}}">-->
+                    <!--<view class="textItemInfo" bindtap="selectContract({{item}})" wx:for="{{contracts}}">{{item.comments}} : {{item.externalContractNbr}}</view>-->
+                <!--</view>-->
+            <!--</view>-->
+            <view class="textItem">
+                <text>合同信息</text>
+                <picker value="{{contractnum}}" range="{{contracts}}" bindchange="selectContract">
+                    <view class="picker">
+                        <text class="earlyTime">{{contractnum}}</text>
+                    </view>
+                </picker>
+            </view>
+            <view class="textItem" style="text-align: center;">
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <label class="radio" style="margin-right: 138rpx;">
+                        <radio value="{{'1'}}" checked="{{fileType === '1'}}" name="fileType" color="#6044cb"/>电子文件
+                    </label>
+                    <label class="radio">
+                        <radio value="{{'2'}}" checked="{{fileType === '2'}}" name="fileType" color="#6044cb"/>纸质文件
+                    </label>
+                </radio-group>
+            </view>
+            <view class="textItem"  wx:if="{{fileType == '1'}}">
+                <text>邮箱</text><input type="text" bindinput="changeValue" value="{{email}}" data-name="email" placeholder="请输入邮箱地址"/>
+            </view>
+            <view class="textItem"  wx:if="{{fileType == '2'}}">
+                    <text>地址</text><input type="text" bindinput="changeValue" value="{{address}}" data-name="address" placeholder="请输入地址查收纸质理赔函"/>
+                </view>
+            <view class="textItem">
+                    <text>定损金额(元)</text><input type="number" value="{{moneyNum}}" maxlength="8" bindinput="changeValue" data-name="moneyNum" placeholder="请输入定损金额"/>
+                </view>
+            <view class="textItemPic">
+                    <text class="picText">上传定损单</text>
+                    <view class="picBox">
+                        <view class="pic" wx:for="{{policyurls}}">
+                            <image class="deleteImg" src="{{url_link?url_link+'delete.png':''}}" bindtap="deleteImg" data-wpydeleteimg-a="{{index}}"/>
+                            <image class="srcImg" src="{{item}}" bindtap="previewImg"/>
+                        </view>
+                        <view class="pic" bindtap="chooseImg">
+                            <text>+</text>
+                        </view>
+                    </view>
+                </view>
+        </view>
+        <view class="earlyBtn" bindtap="submit">提交</view>
+        <view class="earlyInfo">*填写个人信息后才可获得理赔证明明细哦</view>
+    </view>

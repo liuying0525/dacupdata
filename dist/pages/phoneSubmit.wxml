@@ -1,0 +1,16 @@
+
+    <view class="submitSuccess">
+        <view class="successIcon">
+            <image src="{{url_link?url_link+'/submitS.png':''}}"/>
+        </view>
+        <view class="successTitle">提交成功!</view>
+        <view class="successInfo">
+            工作人员将尽快处理你的修改手机号申请，可在修改手机号页面关注申请状态。*温馨提示：变更成功后，您用旧手机号注册的小程序账号立即失效。如您后续使用我司微信小程序时，需重新注册（如变更手机号前提交的其他业务，请在原账号中查看流程），感谢您的理解与支持！
+        </view>
+        <view class="earlyBtn" bindtap="goList">确定</view>
+        <view class="cancelBtn" bindtap="cancel">取消申请</view>
+        <view class="earlyInfo">
+            *已提交的修改手机号申请可于工作人员受理之前在修改手机号页面取消，
+            如有疑问可联系<text style="color: #6044cb;" bindtap="makeCall" data-wpymakecall-a="400-920-7258">400-920-7258</text>咨询
+        </view>
+    </view>
