@@ -1,0 +1,191 @@
+<style lang="less">
+    .cardBook {
+        padding-top: 110rpx;
+        .bookBox {
+            height: 548rpx;
+            width: 647rpx;
+            margin: 0 auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 90.55rpx 57rpx;
+            -webkit-box-shadow:0 0 16rpx 6rpx rgba(0,0,0,0.1);
+            -moz-box-shadow:0 0 16rpx 6rpx rgba(0,0,0,0.1);
+            box-shadow:0 0 16rpx 6rpx rgba(0,0,0,0.1);
+        }
+        .near{
+          font-size:23.54rpx;
+          line-height: 47.69rpx;
+        }
+        .bookTitle {
+            font-size: 28rpx;
+            color: #4b4b4b;
+            text-align: center;
+            margin-bottom: 51rpx;
+        }
+        .textWords {
+            font-size: 22.94rpx;
+            line-height: 33.2rpx;
+            color: #4b4b4b;
+            padding-top:15rpx;
+        }
+        .textInfo {
+            font-size: 22rpx;
+            color: #767373;
+            margin-top: 55rpx;
+        }
+        .nextBtn {
+            width: 545rpx;
+            height: 72rpx;
+            font-size: 28rpx;
+            line-height: 72rpx;
+            text-align: center;
+            background: #6044cb;
+            color: #fff;
+            -webkit-border-radius: 6rpx;
+            -moz-border-radius: 6rpx;
+            border-radius: 6rpx;
+            margin: 50rpx auto 0;
+        }
+        .emailInput {
+            width: 545rpx;
+            height: 72rpx;
+            font-size: 24rpx;
+            line-height: 72rpx;
+            text-align: center;
+            -webkit-border-radius: 6rpx;
+            -moz-border-radius: 6rpx;
+            border-radius: 6rpx;
+            margin: 50rpx auto 0;
+            background: #dce0eb;
+            color: #000;
+        }
+    }
+</style>
+<template>
+    <view class="cardBook">
+        <view class="bookBox">
+            <view class="near">最近发送邮箱：{{emailaddress}} </view>
+            <view class="near">最近发送时间：{{createtime}}</view>
+            <view class="textWords">若邮箱未收到授权书模板，可点击“重新发送”再
+                次获取。如由邮箱地址填写错误导致，请修改邮
+                箱地址后点击“重新发送”。</view>
+            <input type="text" class="emailInput" placeholder="请输入你的邮箱地址" data-name="email" value="{{email}}" @input="changeValue"/>
+        </view>
+        <view class="nextBtn" @tap="sendAgain">重新发送</view>
+    </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  import toastInfo from '../components/toastInfo'
+  export default class CardGetAgain extends wepy.page{
+    config = {
+      navigationBarTitleText: '还款卡变更'
+    }
+    data = {
+      parent_data: '',
+      email: '',
+      recordId: '',
+      canClickAgin:true,
+      createtime:'',
+      emailaddress:''
+    }
+    components = {
+      toastInfo: toastInfo
+    };
+    methods = {
+      changeValue: function (e) {
+        this[e.currentTarget.dataset.name] = e.detail.value;
+      },
+      sendAgain: function () {
+        let that = this;
+        if(!that.canClickAgin){
+          return false;
+        }
+         that.canClickAgin=false;
+        if(!that.$invoke('toastInfo', 'emailReg', that.email)){
+          that.$invoke('toastInfo', 'modelFunc', '000', '邮箱格式错误');
+          return false;
+        }
+        wx.request({
+          url: that.parent_data.json_dhLink + '/email/sendAuthorization',
+          data: {
+            userId: that.parent_data.login_userId,
+            loginToken: that.parent_data.login_token,
+            recordId: that.recordId,
+            email: that.email
+          },
+           method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+          success: function(res) {
+            that.canClickAgin=true;
+            if (res.data.code == '10001') {
+              wx.navigateBack({
+                delta: 1
+              })
+            } else {
+              that.$invoke('toastInfo', 'modelFunc', res.data.code, res.data.msg);
+            }
+          },
+          fail: function( ) {
+            console.log('邮件发送失败')
+          }
+        })
+      }
+    };
+      showearly(){
+        let that=this;
+        wx.request({
+          url:that.parent_data.json_dhLink+'/email/latelyRecord',
+           data: {
+            userId: that.parent_data.login_userId,
+            loginToken: that.parent_data.login_token,
+            recordId: that.recordId
+          },
+          success:function(res){
+            console.log(res);
+            if (res.data.code == '10001') {
+              that.createtime=that.timeReg(res.data.data.createTime);
+              that.emailaddress=res.data.data.receiver;
+              that.$apply();
+            }
+          }
+        })
+      };
+       timeReg (num) {
+      let date = new Date(num * 1000);
+      let Y = date.getFullYear() + '-';
+      let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+      let D = date.getDate() < 10? ('0'+ (date.getDate()) + ' ') : (date.getDate() + ' ');
+      let h = date.getHours() < 10 ? (('0' + date.getHours()) + ':') : (date.getHours() + ':');
+      let m = date.getMinutes() < 10 ? (('0' + date.getMinutes()) + ':') : (date.getMinutes() + ':');
+      let s = date.getSeconds()< 10 ? ('0' + date.getSeconds()) : date.getSeconds();
+      return Y+M+D+h+m+s;
+    };
+    onLoad(options) {
+      this.parent_data = this.$parent.globalData;
+      this.recordId = options.id;
+      
+     
+    };
+       onShow() {
+      this.url_link = this.$parent.globalData.url_link;
+      this.parent_data = this.$parent.globalData;
+      var res = wx.getSystemInfoSync();
+      if (res.model.search('iPhone X') !== -1) {
+        this.iphoneX = true;
+      } else {
+        this.iphoneX = false;
+      }
+      if (this.parent_data.login_token !== '') {
+
+       this.showearly();
+      } else {
+        this.$redirect('secLogin',{backUrl: 'cardGetAgain'});
+      }
+    }
+    
+  }
+</script>

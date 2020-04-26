@@ -1,0 +1,104 @@
+<style lang="less">
+  .informationC {
+    view,input{
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+   .btnlist{
+     display: flex;
+     width: 100%;
+     justify-content:space-around;
+     margin-top:150rpx;
+     .btn{
+width: 288rpx;
+height: 237rpx;
+border-radius: 7rpx;
+background-image: linear-gradient(#7f83f2, #5c45c3);
+
+align-items: center;
+color: #fff;
+font-size: 32rpx;
+display: flex;
+flex-direction: column;
+padding-top: 48rpx;
+line-height: 108rpx;
+
+     }
+   }
+   .aftericon{
+     height:76rpx;
+     width:76rpx;
+
+   }
+  }
+</style>
+<template>
+  <view class="informationC">
+      <view class="btnlist">
+        <view class="btn" bindtap='phonePerson'>
+          <image class="my_icon_content_img aftericon" src="{{url_link?url_link+'phoneChange.png':''}}" mode="aspectFit"></image>
+          <view>变更手机号</view>
+        </view>
+        <view class="btn" bindtap='cardChange'>
+          <image class="my_icon_content_img aftericon" src="{{url_link?url_link+'carChange.png':''}}" mode="aspectFit"></image>
+          <view>变更还款</view>
+        </view>
+      </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy';
+  import toastInfo from '../components/toastInfo'
+  export default class informationC extends wepy.page {
+    config = {
+      navigationBarTitleText: '客户信息变更',
+      onReachBottomDistance: 50
+    };
+    components = {
+      toastInfo: toastInfo
+    };
+    data = {
+      iphoneX:false,
+      url_link: '',
+      parent_data: ''
+    };
+ 
+    methods = {
+    //还款卡变更
+    cardChange() {
+          wx.navigateTo({
+            url: 'cardList'
+          });  
+    },
+    //修改手机号
+    phonePerson() {
+          wx.navigateTo({
+            url: 'phoneList'
+          });
+      
+    },
+ 
+    };
+
+    onLoad() {
+
+
+    }
+    onShow() {
+      this.url_link = this.$parent.globalData.url_link;
+      this.parent_data = this.$parent.globalData;
+      var res = wx.getSystemInfoSync();
+      if (res.model.search('iPhone X') !== -1) {
+        this.iphoneX = true;
+      } else {
+        this.iphoneX = false;
+      }
+      if (this.parent_data.login_token !== '') {
+
+      } else {
+        this.$redirect('secLogin',{backUrl: 'informationC'});
+      }
+    }
+  }
+</script>

@@ -1,0 +1,647 @@
+<style lang="less">
+  .noData {
+    width: 500rpx;
+    margin: 300rpx auto;
+    image {
+      display: block;
+      height: 252rpx;
+      width: 309rpx;
+      margin: 0 auto;
+    }
+    .textInfo {
+      text-align: center;
+      font-size: 36rpx;
+      line-height: 120rpx;
+    }
+  }
+.dade {
+  width: 92%;
+  margin: 0 auto;
+}
+.top {
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: rgb(85, 85, 85);
+}
+.time {
+  display: flex;
+  padding: 15rpx 24rpx 15rpx 24rpx;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  font-size: 28rpx;
+  background: #eee;
+}
+.time image {
+  width: 110rpx;
+  height: 34rpx;
+}
+.time-datalis {
+  font-size: 28rpx;
+  line-height: 65rpx;
+  margin-top: 35rpx;
+  margin-bottom: 35rpx;
+  color: rgb(68, 68, 68);
+  
+}
+.remind {
+  line-height: 100rpx;
+  font-size: 22rpx;
+  color: rgb(255, 2, 2);
+  display: flex;
+  align-items: center;
+}
+.remind image {
+  width: 20rpx;
+  height: 20rpx;
+}
+.table {
+  border-collapse: collapse;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  line-height: 100rpx;
+}
+.td {
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+  color: rgb(82, 82, 82);
+  font-size: 28rpx;
+}
+.bg-w {
+  background: snow;
+}
+.bg-g {
+  background: #e6f3f9;
+}
+.th {
+  width: 40%;
+  justify-content: center;
+  color: rgb(82, 82, 82);
+  display: flex;
+  height: 3rem;
+  font-size: 24rpx;
+  align-items: center;
+}
+.daxiao1 {
+  margin-right: 20rpx;
+}
+.details_di {
+  width: 85rpx;
+  font-size: 22rpx;
+  line-height: 30rpx;
+  color: rgb(0, 199, 174);
+  border-radius: 8rpx;
+  text-align: center;
+}
+.swiper-tab{
+width: 100%;
+text-align: center;
+height: 88rpx;
+line-height: 88rpx;
+font-weight: bold;
+}
+.swiper-tab-item{
+display: inline-block;
+width: 33.33%;
+color:red;
+}
+.active{
+color:aqua;
+}
+swiper{
+  height: 260vh;
+}
+.tab-h{ height: 80rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 80rpx;background: #F7F7F7; font-size: 16px; white-space: nowrap; z-index: 99;}
+.tab-item{margin:0 36rpx;display: inline-block;}
+.tab-item.active{color: #4675F9;position: relative;}
+.tab-item.active:after{ content: "";display: block;height: 8rpx;width: 100%;background: #4675F9;position: absolute; bottom: 0;left: 5rpx;border-radius: 16rpx;}
+.item-ans{ width: 100%;display: flex; flex-grow: row no-wrap;justify-content: space-between; padding: 30rpx;box-sizing: border-box; height: 180rpx;align-items: center;}
+.avatar{width: 100rpx;height: 100rpx;position: relative;padding-right: 30rpx;}
+.avatar .img{width: 100%;height: 100%;}
+.avatar .doyen{width: 40rpx;height: 40rpx;position: absolute;bottom: -2px;right: 20rpx;}
+.expertInfo{font-size: 12px;flex-grow: 2;color: #B0B0B0;line-height: 1.5em;}
+.expertInfo .name{font-size: 16px;color:#000;margin-bottom: 6px;}
+.askBtn{ width: 120rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 14px; border-radius: 60rpx;border: 1px solid #4675F9; color:#4675F9;}
+.swipers{
+height: 383.33rpx;
+width: 676.11rpx;
+border-radius: 28.98rpx;
+background: rgba(255,255,255,.73);
+box-shadow: 22.34rpx 1rpx 39.24rpx 0 rgba(58,50,97,.2);
+  .originalCar{
+   height: 183.45rpx;
+width: 430.94rpx;
+
+}
+
+  }
+
+.swiper{
+height: 440rpx;
+width: 100%;
+overflow: hidden;
+margin: 0 auto;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.swiperItem{
+ display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+height: 95%;
+padding-top: 5%;
+box-sizing: border-box;
+>view{
+  color:#1e115a;
+  font-size: 23rpx;
+  &:nth-of-type(1){
+   font-weight: bold; 
+  }
+}
+}
+.swipertext{
+  padding-left:67.61rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width:100%;
+  view{
+    font-size: 22.94rpx;
+    color:#1e105a;
+    text{
+      color:#ff0000;
+      padding-left:15rpx;
+    }
+    &:nth-last-child(1){
+     font-size: 16.9rpx;
+     color:#4c417b;
+     line-height: 44.67rpx;
+      }
+  }
+}
+.wx-swiper-dots {
+  position: relative;
+  left: unset !important;
+  right: 0;
+}
+
+.wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 5rpx;
+}
+.dadeinfo{
+   color:#3f3f40;
+  font-size:20.54rpx;
+  line-height: 46.48rpx;
+  margin-top:30rpx;
+  .dadetitle{
+    color:#626166;
+    font-size:24.15rpx;
+    line-height: 69.42rpx;
+    height:69.42rpx;
+    background-color: #f2f4f8;
+    width:100%;
+    padding-left:50.71rpx;
+    margin-bottom: 15rpx;
+
+  }
+  .dadeitem{
+display: flex;
+flex-direction: column;
+  padding-left:75.36rpx;
+  padding-right:92.96rpx;
+  view{
+ display: flex;
+justify-content: space-between;   
+ text{
+    color:#1e115a;
+  }
+  }
+  }
+
+  .td{
+    font-size:inherit;
+  }
+  .th{
+    height:auto;
+     color:#000;
+    line-height: 56.14rpx;
+    font-size: 24.15rpx;
+  }
+  .tr{
+    line-height: inherit;
+  }
+  scroll-view{
+    height:230rpx;
+    padding-bottom:30rpx;
+    tr{
+      line-height: inherit;
+    }
+  }
+}
+.car{
+  position:relative;
+  height: 206.45rpx;
+width: 450.94rpx;
+
+}
+.dadeBox{
+  width:100%;
+  overflow-x: hidden;
+ 
+}
+.purpleCar{
+height: 123.15rpx;
+width: 370.44rpx;
+left: 31.46rpx;
+top: 31.46rpx;
+
+
+}
+.purpleshade{
+ width: 0;
+height: 100%;
+position: absolute;
+z-index: 3;
+opacity: 0;
+top: 31rpx;
+left: 31rpx;
+overflow: hidden;
+  transition:all 1s linear;
+}
+
+.dhtr{
+  .td{
+color:#ff0000;
+  }
+
+  
+}
+.alreadytr{
+  .td{
+ color:#05ac73;
+  }
+ 
+}
+
+.complete{
+  text-align: center;
+}
+.noticeicon{
+  height:28rpx;
+  width:31rpx;
+  vertical-align: middle;
+  padding-right:20rpx;
+
+}
+.notice{
+color: #ff1515;
+font-size: 20rpx;
+margin-top: 48rpx;
+padding-left: 48rpx;
+line-height: 28rpx;
+height: 28rpx;
+vertical-align: middle;
+
+}
+</style>
+<template>
+  <view class="repaymentBox">
+   <view class="swiper" style="{{url_link?'background:url('+url_link+'swiperbg.png) no-repeat top left / 100% 100%':''}}">
+    <swiper class="swipers" current="{{currentTab}}" duration="300" bindchange="switchTab" indicator-dots="{{true}}" circular="true" indicator-color="rgba(111,87,217,.33)" indicator-active-color="rgba(111,87,217,1)">
+        <block wx:for="{{listData}}" wx:key="index">
+          <swiper-item>
+            <view class="swiperItem">
+              <view>{{item.CONTRACT_NBR}}</view>
+              <view class="car">
+                <image src="{{url_link?url_link+'originalCar.png':''}}" class="originalCar"></image>
+                <view class="purpleshade" style="{{item.purpleshade?item.carWidth:'opacity:0;width:0'}}">
+                    <image src="{{url_link?url_link+'purpleCar.png':''}}" class="purpleCar"></image>
+                </view>
+              </view>
+              <view class="swipertext">
+                <view>待还总额<text>¥{{item.total}}</text></view>
+                <view>*本金+利息+罚息</view>
+              </view>
+            </view>            
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+ 
+    <view class='dadeBox' >
+      <view class="notice" wx-if="{{!!showModel.canSettle}}" @tap="notice({{showModel}})">
+        <image src="{{url_link?url_link+'notice.png':''}}" class="noticeicon"/>您的合同现在可以办理结清材料申请，前往办理 >
+      </view>  
+      <view class="dadeinfo">
+            <view class="dadetitle">贷款信息</view>
+             <view class='dadeitem'>
+            <view>合同号：
+              <text>{{showModel.contractNo}}</text>
+            </view>
+            <view>车型：
+              <text>{{showModel.carmodelname}}</text>
+            </view>
+            <view>贷款金额：
+              <text>{{showModel.productpara}}元</text>
+            </view>
+            <view>贷款期数：
+              <text>{{showModel.term}}期</text>
+            </view>
+            <view>贷款利率：
+              <text>{{showModel.rate}}%</text>
+            </view>
+            <view>合同激活日
+              <text>{{showModel.startTime}}</text>
+            </view>
+             <view>合同到期日
+              <text>{{showModel.endTime}}</text>
+            </view>
+             <view>贷款手机号
+              <text>{{showModel.mobile}}</text>
+            </view>
+             <view>还款银行卡
+              <text>{{showModel.bankCardInfo}}</text>
+            </view>
+          </view>
+      </view>
+      <view class="dadeinfo table">
+        <view class="dadetitle">还款明细</view>
+        <view class="tr bg-w">
+          <view class="th">时间</view>
+          <view class="th">期数</view>         
+          <view class="th ">本息总额</view>
+          <view class="th ">状态</view>
+        </view>
+        <!-- <scroll-view scroll-y="true" lower-threshold="400" style="height:220rpx" bindscrolltolower="searchScrollLower"> -->
+          
+          <scroll-view scroll-y="true" lower-threshold="400" style="height:220rpx" >
+        <block wx:for="{{showModel.plans}}"  wx:key="key">
+          <view class="tr {{item.statusName=='待还款'?'dhtr':item.statusName=='已还款'?'alreadytr':' '}}">
+            <view class="td">{{item.customerRentalDate}}</view>
+            <view class="td">{{item.customerRentalId}}</view>           
+            <view class="td">{{item.pmt}}</view>
+            <view class="td">{{item.statusName}}</view>
+          </view>
+        </block>
+        
+         <!-- <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> -->
+         <view class="loading complete">已加载全部</view>
+        </scroll-view>
+      </view>
+  </view>
+    <view class="noData" wx:if="{{noData_show}}">
+      <image src="{{url_link?url_link + 'noData.png':''}}" mode="aspectFit"></image>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import toastInfo from '../components/toastInfo'
+export default class repayment extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的贷款'
+  };
+  components = {
+    toastInfo: toastInfo
+  };
+  data = {
+    winHeight: 0,
+    url_link: '',
+    parent_data:'',
+    // 列表
+    listData: [{purpleshade:false}],
+    swiperList:[],
+    // 还款日
+    hk_time: '',
+    carWidth:'opacity:1;width:0',
+    showModel:{},
+    pageModel:{},
+    currentTab: 0, //预设当前项的值
+    scrollLeft: 0, //tab标题的滚动条位置
+    //searchLoading:false,//上拉加载
+    searchLoadingComplete:false//"没有数据"的变量，
+
+  };
+  computed = {
+    // 缺省压面是否显示
+    noData_show: function () {
+      if (this.listData.length == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+  methods = {
+    onShareAppMessage: function() {
+      return {
+        path: '/pages/index'
+      };
+    },
+  // 滚动切换标签样式
+  switchTab: function (e) {
+    this.currentTab = e.detail.current;
+    this.checkCor();
+    this.showModel=this.listData[this.currentTab];
+    
+   for(var i=0;i<this.listData.length;i++){           
+             if(i==this.currentTab){
+                this.listData[i].purpleshade=true;
+             }else{
+                this.listData[i].purpleshade=false;
+             }
+             }
+    this.$apply();
+  },
+  // 点击标题切换当前页时改变样式
+  swichNav (e) {
+    let that = this;
+    let cur = e.target.dataset.current;
+    let d = new Date(parseInt(that.listData[cur].plandate));
+    let sd = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    that.hk_time = sd;
+    
+    that.winHeight = that.listData[cur]['plans'].length * 100 + 800;
+    if (this.data.currentTab == cur) {
+       return false; 
+       }
+    else {
+      this.currentTab = cur
+    }
+  },
+searchScrollLower:function(){
+  let that=this;
+  //that.getDetail();
+  // if(that.data.searchLoading && !that.data.searchLoadingComplete){
+  //   that.getDetail();
+
+  // }
+},
+notice(item){
+ var keyMap={"deliveryStatus":"status","contractNo":"externalContractNbr"}
+  var objs=Object.keys(item).reduce((newData,key)=>{
+    let newKey=keyMap[key]||key
+    newData[newKey]=item[key]
+    return newData
+  },{})
+
+  
+  if(item.deliveryStatus==0){
+this.$navigate('sendInformation',objs);
+  }else{
+this.$navigate('tosenda',objs);
+  }
+  
+}
+
+  
+  };
+  //判断当前滚动超过一屏时，设置tab标题滚动条。
+    checkCor () {
+    if (this.data.currentTab > 4) {
+      this.scrollLeft = 500
+    } else {
+       this.scrollLeft = 0
+    }
+  }
+  // 我的还款
+  getList () {
+      let that = this;
+      
+
+      wx.showLoading({
+        title: '加载中',
+      })
+      wx.request({
+      //url: that.parent_data.json_dhLink + '/api/repaymentplan',
+      //url:"http://localhost:8088/indemnityList_list.json",
+      url: that.parent_data.json_dhLink + '/contract/getLoanList',
+      data: {
+        userId: that.parent_data.login_userId,
+        loginToken: that.parent_data.login_token
+        // phone: that.parent_data.login_phone // phone: 'shhllfmsksl'
+      },
+      success: function(data) {
+        console.log(data);
+        wx.hideLoading();
+        if (data.data.code == 10001) {
+          that.listData = data.data.data;
+          
+          for(var i=0;i<that.listData.length;i++)
+          { 
+             that.pageModel["pg"+i]=1;          
+               that.listData[i].purpleshade=false;
+            
+              var carwidth=(((that.listData[i].productpara-that.listData[i].total)/that.listData[i].productpara)*370.44).toFixed(2);
+              console.log(carwidth)
+            that.listData[i].carWidth="opacity:1;width:"+parseInt(carwidth)+"rpx" 
+            that.listData[i].productpara=Number(that.listData[i].productpara).toLocaleString();
+that.listData[i].plans.forEach((item,index,arr)=>{
+  item['customerRentalDate']=item['customerRentalDate'].split(" ")[0];
+})
+          }
+           setTimeout(function () {
+           that.listData[0].purpleshade=true;
+           that.$apply();
+          }, 500);
+            
+          
+         
+          if (that.listData.length > 0) {
+            let d = new Date(parseInt(data.data.data[0].plandate));
+            let sd = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+            that.hk_time = sd;
+            that.winHeight = data.data.data[0]['plans'].length * 100 + 800;
+            that.showModel=that.listData[that.currentTab];  
+                     
+          }      
+          that.$apply();
+        } else {
+          that.$invoke('toastInfo', 'modelFunc', data.data.code, data.data.msg);
+        }
+      },
+      fail: function() {
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        });
+
+        setTimeout(function() {
+          wx.hideToast();
+        }, 2000);
+        return;
+      }
+    });
+  }
+
+  getDetail(e){
+     let that = this;
+     let currentIndex=that.currentTab;
+     let currentPageIndex= parseInt(that.pageModel["pg"+currentIndex])+1;
+     console.log("currentIndex="+currentPageIndex);
+      wx.showLoading({
+        title: '加载中',
+      });
+      wx.request({
+      url: that.parent_data.json_dhLink + '/api/repaymentplan',
+      //url:"http://localhost:8088/indemnityList_listDetail.json",
+      data: {
+        userId: currentPageIndex,
+        loginToken: that.listData[currentIndex].CONTRACT_NBR
+      },
+      success: function(data) {
+        wx.hideLoading();
+        if (data.data.code == 10001) {
+          //that.listData = data.data.data;
+          // 加载更多
+          var newPlan=data.data.data.plans;
+          if (newPlan.length > 0) 
+          {
+             that.showModel.plans=that.showModel.plans.concat(newPlan);
+             that.pageModel["pg"+currentIndex]=currentPageIndex;
+             //that.searchLoading=true;
+             that.$apply();
+          }
+        } else {
+          
+          that.$invoke('toastInfo', 'modelFunc', data.data.code, data.data.msg);
+          that.searchLoadingComplete=true;
+          that.$apply();
+        }
+      },
+      fail: function() {
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        });
+
+        setTimeout(function() {
+          wx.hideToast();
+        }, 2000);
+        return;
+      }
+    });
+
+  }
+
+  onShow () {
+    this.parent_data = this.$parent.globalData;
+    this.url_link = this.$parent.globalData.url_link;
+    if (this.parent_data.login_token !== '') {
+      this.listData = []
+      this.getList();
+    } else {
+      this.$redirect('secLogin',{backUrl: 'repayment'});
+    }
+  }
+  onLoad() {
+  }
+}
+</script>

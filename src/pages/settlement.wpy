@@ -1,0 +1,350 @@
+<style lang="less">
+.settlementBox{
+  padding: 7rpx 50rpx 46rpx;
+      view,input{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        .earlyStatut {
+            height: 85rpx;
+            line-height: 85rpx;
+            font-size: 26rpx;
+            padding: 0 43rpx;
+            border-bottom: 1px solid #c5c5c5;
+            display: flex;
+            justify-content:space-between;
+        }
+  .noData {
+    width: 500rpx;
+    margin: 300rpx auto;
+    image {
+      display: block;
+      height: 252rpx;
+      width: 309rpx;
+      margin: 0 auto;
+    }
+    .textInfo {
+      text-align: center;
+      font-size: 36rpx;
+      line-height: 120rpx;
+    }
+  }
+
+        .settlementList {
+            -webkit-box-shadow:0 0 10rpx 4rpx rgba(116,110,139,0.17);
+            -moz-box-shadow:0 0 10rpx 4rpx rgba(116,110,139,0.17);
+            box-shadow:0 0 10rpx 4rpx rgba(116,110,139,0.17);
+            margin-bottom: 67rpx;
+            margin-top:34rpx;
+            border-radius: 4rpx;
+        }
+        .earlyItem{
+            position: relative;
+            padding: 34rpx 43rpx 50rpx;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            .textItem{
+                width: 100%;
+                font-size: 26rpx;
+                margin-bottom: 44rpx;
+                display: flex;
+                justify-content:space-between;
+                >view{
+                  color:#494949;
+                  width:50%;
+                }
+                >text{
+                  color:#000;
+                  text-align: right;
+                }
+            }
+            .changeBtn{
+                width: 176rpx;
+                height: 46rpx;
+                line-height: 46rpx;
+                color: #fff;
+                background: #6044cb;
+                text-align: center;
+                -webkit-border-radius: 6rpx;
+                -moz-border-radius: 6rpx;
+                border-radius: 6rpx;
+                margin-right: 66rpx;
+                padding: 4rpx 10rpx;
+                border: 1px solid #6044cb;
+            }
+            .cancelBtn{
+                .changeBtn;
+                border: 1px solid #6044cb;
+                color: #6044cb;
+                background: #fff;
+                float: left;
+                margin: 0;
+            }
+            .editBtn {
+                background: #6044cb;
+                color: #fff;
+                float: left;
+            }
+            .itemState {
+                position: absolute;
+                right: 32rpx;
+                bottom:140rpx;
+                image{
+                    height:105rpx ;
+                    width: 139rpx;
+                }
+            }
+        }
+    .contractNo{
+      font-size:20rpx;
+      font-weight: bold;
+      color:#000;
+    }
+    .statut{
+    font-size: 24rpx;
+    font-weight: bold;
+    color:#ff0000;
+    }
+
+
+}
+
+
+</style>
+<template>
+  <view class="settlementBox">
+    <view wx:if="{{!!list && list.length>0}}">
+      <view class="settlementList" wx:for="{{list}}" wx:key="id">
+        <!-- <view class="earlyTime">提交时间  ：  {{item.createTime}}</view> -->              
+        <view class="earlyStatut">
+          <view class="contractNo">{{item.externalContractNbr}}</view>
+          <view class="statut" @tap="currentStatut({{item}})">{{statutsEn[item.status]}}</view>             
+        </view>
+        <view class="earlyItem">
+            <view class="textItem">
+              <view>车型</view>
+              <text>{{item.comments}}</text>
+            </view>
+            <view class="textItem">
+              <view>合同到期日</view>
+                <text>{{item.contractEndDte}}</text> 
+            </view>                 
+            <view class="textItem">
+              <view>合同实结清日</view>
+              <text>{{item.contractMaturityDte}}</text>         
+            </view> 
+        </view>   
+    </view>
+    </view>
+    <view class="noData" wx:if="{{noData_show}}">   
+      <image src="{{url_link?url_link + '/kong.png':''}}" mode="aspectFit"></image>
+      <view class="textInfo">您当前暂无需要办理的合同</view>
+        <view>
+            <view>可办理条件，满足以下任意一种：</view>
+            <text>1：合同状态正常，并且离合同到期日10天内</text>
+            <text>2：2020-01-01后结清的合同，包含提前结清</text>
+        </view>
+    </view> 
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+import toastInfo from '../components/toastInfo'
+export default class settlement extends wepy.page {
+  config = {
+    navigationBarTitleText: '结清材料'
+  };
+  components = {
+    toastInfo: toastInfo
+  };
+  data = {
+    winHeight: 0,
+    url_link: '',
+    parent_data:'',
+    repaymentIds:[],//列表中ids
+    // 列表
+    list: [],
+    // 还款日
+    hk_time: '',
+     currentTab: 0, //预设当前项的值
+    scrollLeft: 0, //tab标题的滚动条位置
+    noData_show:false,
+    contractEndDte:'',
+    contractEndTime:'',
+    statutsEn:['快递信息待填写','已填写待结清','待寄件','已寄件','已签收']
+
+  };
+  // computed = {
+  //   // 缺省压面是否显示
+  //   noData_show: function () {
+  //     if (this.list.length == 0) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  // };
+  methods = {
+    onShareAppMessage: function() {
+      return {
+        path: '/pages/index'
+      };
+    },
+    
+    //跳转页面
+    currentStatut:function(item){
+      switch(item.status){
+        case 0:
+          this.$navigate('sendInformation',item);
+          break;
+        case 1:  
+          this.$navigate('tosenda',item);
+        case 2:  
+          this.$navigate('tosenda',item);
+          break;
+        case 3:  
+          this.$navigate('tosenda',item);
+          break;          
+      }  
+    }
+  };
+
+  // 结清材料
+  getList () {
+      let that = this;
+      wx.showLoading({
+        title: '加载中',
+      })
+wx.login({
+  success: function(res){
+    // success
+      wx.request({
+      url: that.parent_data.json_dhLink+'/delivery/queryContractList',
+      //url: 'http://test-webapi.dongzhengafc.com:9113/delivery/queryContractList',
+      //url:'http://localhost:8088/settlement.json',
+      data: {
+           loginToken: that.parent_data.login_token,
+           userId: that.parent_data.login_userId
+         
+      },
+       header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      method: 'POST',
+      success: function(res) {
+     if (res.data.code == '10001') {
+            console.log('新获取列表长度为：'+ that.list.length + '当前页为'+ that.currentNum);
+            wx.hideLoading();
+            that.existProcessing = res.data.data.existProcessing;
+            that.repaymentIds = [];
+       
+            if (res.data.data.length > 0) {
+              that.list = res.data.data; 
+              for(let i in res.data.data) {
+              // res.data.data[i].contractEndDte = that.timeReg(res.data.data[i].contractEndDte).split('T')[0];
+              // res.data.data[i].contractEndDte = that.timeReg(res.data.data[i].contractEndDte);
+                 res.data.data[i].contractEndDte = res.data.data[i].contractEndDte.split('T')[0];
+                 if(res.data.data[i].contractMaturityDte!=null){
+                    res.data.data[i].contractMaturityDte=res.data.data[i].contractMaturityDte.split('T')[0];
+                 }else{
+                   res.data.data[i].contractMaturityDte="----------"
+                 }
+             
+              that.repaymentIds.push(res.data.data[i].contractId);
+              if(res.data.data[i].status==1){
+                if(res.data.data[i].requestStatusCde==20){
+                  that.list[i].status=1;
+                }else{
+                  that.list[i].status=null;
+                }
+              }
+              if(res.data.data[i].status==2){
+                if(res.data.data[i].requestStatusCde==24 || res.data.data[i].requestStatusCde==25){
+                  that.list[i].status=2;
+              }else{
+                that.list[i].status=null;
+              }
+            }             
+              that.noData_show=false;
+              that.$apply();
+              }
+            } else {
+              that.noData_show=true;
+              if (that.currentNum == 1) {
+                that.list = res.data.data;
+                that.$apply();
+              } else {
+                that.currentNum = that.currentNum <= 1 ? 1: that.currentNum- 1;
+                wx.showToast({
+                  title: '加载全部',
+                  icon: 'success',
+                  duration: 2000
+                })
+              }
+              // return false;
+            }
+            // }
+          } else {
+            wx.hideLoading();
+            that.$invoke('toastInfo', 'modelFunc', res.data.code, res.data.msg);
+          }
+      },
+      fail: function() {
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        });
+
+        setTimeout(function() {
+          wx.hideToast();
+        }, 2000);
+        return;
+      }
+    });
+  },
+  fail: function() {
+    // fail
+  },
+  complete: function() {
+    // complete
+  }
+})
+
+
+ 
+
+
+
+  }
+
+   timeReg (num) {
+      let date = new Date(num * 1000);
+      let Y = date.getFullYear() + '-';
+      let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+      let D = date.getDate() < 10? ('0'+ (date.getDate()) + ' ') : (date.getDate() + ' ');
+      let h = date.getHours() < 10 ? (('0' + date.getHours()) + ':') : (date.getHours() + ':');
+      let m = date.getMinutes() < 10 ? (('0' + date.getMinutes()) + ':') : (date.getMinutes() + ':');
+      let s = date.getSeconds() < 10 ? ('0' + date.getSeconds()) : date.getSeconds();
+      return Y+M+D+h+m+s;
+    }
+
+
+  onShow () {
+    this.parent_data = this.$parent.globalData;
+    this.url_link = this.$parent.globalData.url_link;
+   
+    if (this.parent_data.login_token !== '') {
+      this.list = []
+      this.getList();
+    } else {
+      this.$redirect('secLogin',{backUrl: 'settlement'});
+    }
+  }
+  onLoad() {
+  }
+
+}
+</script>

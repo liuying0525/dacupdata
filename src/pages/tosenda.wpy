@@ -1,0 +1,309 @@
+<style lang="less">
+.tosendaBox {
+  // padding: 70rpx 0 0;
+  view,
+  input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .tosendatop{
+    width:100%;
+    height:196rpx;
+    line-height:196rpx;
+    text-align:center;
+    font-size:26rpx;
+    font-weight:bold;
+  
+  }
+
+  .tosendacenter{
+    padding:32rpx 78rpx;
+    font-size:24rpx;
+    width:100%;
+    background-color:#f4f6fa;
+  }
+
+
+  .titleInfo {
+    font-size: 24rpx;
+    line-height: 46rpx;
+    margin-bottom: 55rpx;
+    .titlestatut {
+      font-size: 28rpx;
+      margin-bottom: 33rpx;
+    }
+    text {
+      color: #ff0000;
+      &:nth-of-type(1) {
+        font-weight: bold;
+      }
+    }
+  }
+  .information {
+    line-height: 58rpx;
+    font-size: 24rpx;
+    display:flex;
+    >view{
+      margin-right:15rpx;
+    }
+  }
+  .tosendabottom{
+    font-size:24rpx;
+    padding:40rpx 0 0 78rpx;
+    line-height: 58rpx;
+  }
+  
+  .postbottom{
+    padding:45rpx 30rpx 0;
+    width: 100%;
+
+  }
+  .postBox{
+    display: flex;
+    flex-flow: column;
+    box-shadow: 0 0 10rpx 4rpx rgba(116,110,139,.17);
+    .posttitle{
+      height:64rpx;
+      line-height: 64rpx;
+      color:#fff;
+      font-size:24rpx;
+      padding-left:46rpx;
+      background-color:#672ae3;
+      border-radius: 4rpx;
+    }
+    .postcontent{
+      padding-top: 69rpx;
+
+      .postitem{
+        display: flex;
+        padding-left: 23rpx;
+        padding-right:23rpx;
+        >view{
+          display: flex;
+          flex-flow: column;
+          &.itemleft{
+            width:89rpx;
+            .first{
+              font-size:16rpx;
+              color:#131313;
+              line-height: 28rpx;
+            }
+            .last{
+              font-size:13rpx;
+              color:#676767;
+              line-height: 40rpx;
+
+            }
+          }
+          &.itemright{
+            color:#909090;
+            border-left:1px solid #817f7f;
+            position: relative;
+            padding-bottom:60rpx;
+            flex: 1;
+           padding-left:30rpx;
+            .first{
+              font-size:26rpx; 
+               line-height: 37rpx;            
+            }
+            .last{
+              font-size:18rpx;
+              line-height: 28rpx;
+
+            }
+            &:after{
+                content:'';
+                display: block;
+                height:22rpx;
+                width:22rpx;
+                border-radius: 50%;
+                background-color:#a8a8a8;
+                position: absolute;
+                top:5rpx;
+                left:-11rpx;             
+            }
+        
+          }
+        }
+            &:nth-of-type(1){
+              .itemleft{
+                .first{
+                  margin-top:-5rpx;
+                }
+              }
+              .itemright{
+                >view:nth-of-type(1){
+                  margin-top:-10rpx;
+                }
+                  &:after{             
+                        content:'';
+                      display: block;
+                      height:22rpx;
+                      width:22rpx;
+                      border-radius: 50%;
+                      background-color:#672ae3;
+                      position: absolute;
+                      top:0;
+                      left:-11rpx; 
+                      }
+                }       
+            }   
+      }
+    }
+  }
+
+
+}
+</style>
+<template>
+    <view class="tosendaBox">      
+        <view class="tosendatop">
+            <text class="infoNo">{{item.externalContractNbr}}</text>
+        </view>  
+        <view class="tosendacenter">                
+            <view class="information">
+                <view>收件人:</view>{{item.name}}           
+            </view>
+            <view class="information">
+                <view>收件人联系电话:</view>{{item.phone}}               
+            </view>
+            <view class="information">
+                <view>收件地址:</view>{{item.address}}
+            </view>
+        </view>
+
+        <view class="tosendabottom" wx:if="{{item.status==1}}">
+          待合同结清后，我们会第一时间办理您的申请，谢谢配合。
+        </view>
+        <view class="tosendabottom" wx:if="{{item.status==2}}">
+          您的抵押材料、车辆登记证以及相关结清材料我们将尽快寄出，请耐心等待。
+        </view>
+        <view class="postbottom" wx:if="{{item.status==3}}">
+            <view class="postBox">
+              <text class="posttitle">顺丰速运  {{item.deliveryPostid}}</text>
+              <view class="postcontent">
+                <view class="postitem" wx:for="{{postlist}}" wx:key="id">
+                  <view class="itemleft">
+                      <view class="first">{{item.postDate}}</view>
+                      <view class="last">{{item.postTime}}</view>
+                  </view>
+                  <view class="itemright">
+                    <view class="first" wx:if="{{item.postStatut!=''}}">{{item.postStatut}}</view>
+                    <view class="last">{{item.remark}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+        </view>
+         
+        
+     
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+import toastInfo from '../components/toastInfo';
+export default class tosenda extends wepy.page {
+  config = {
+    navigationBarTitleText: '结清材料'
+  };
+  components = {
+    toastInfo: toastInfo
+  };
+  data = {
+    url_link: '',
+    settlementStatus: 0,
+    position: '',
+    isShow: false,
+    item:{},
+    postlist:[],
+    poststatutsEn:{'80':'已签收','44':'派送中','30':'运输中','50':'已取件'}
+  };
+  methods = {
+      
+  };
+
+infoShow(){
+  var that=this;
+   wx.showLoading({
+        title: '加载中',
+      })
+     wx.request({
+      //url:that.parent_data.json_dhLink + '/delivery/queryContractDetail',
+      url:'http://test-webapi.dongzhengafc.com:9113/delivery/queryContractDetail',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      method: 'POST',
+      data:{
+        loginToken: that.parent_data.login_token,
+        userId: that.parent_data.login_userId,
+        contractId:that.item.contractId
+
+      },
+      success: function(res) {
+           
+     if (res.data.code == '10001') {
+           console.log(res);
+           
+           Object.assign(that.item,res.data.data);
+           wx.hideLoading();
+           if(that.item.status==3){
+              that.postlist=res.data.data.ecpInfo;
+              for(var i in that.postlist){
+                that.postlist[i].postDate=res.data.data.ecpInfo[i].acceptTime.slice(5,10);
+                that.postlist[i].postTime=res.data.data.ecpInfo[i].acceptTime.slice(14,19);
+                  for(var key in that.poststatutsEn){
+                    if( res.data.data.ecpInfo[i].opcode==key){
+                      that.postlist[i].postStatut=that.poststatutsEn[key];
+                    }else{
+                      that.postlist[i].postStatut="";
+                    }               
+                  }
+                }
+           }
+            that.$apply();
+          } else {
+           
+          }
+      },
+      fail: function() {
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        });
+        setTimeout(function() {
+          wx.hideToast();
+        }, 2000);
+        return;
+      }
+    });  
+}
+  onLoad(res){
+    console.log(res);
+    this.item={};
+    if(res!=undefined){
+      this.item=res;
+      
+    }
+  }
+  onShow(){
+      this.url_link = this.$parent.globalData.url_link;
+      this.parent_data = this.$parent.globalData;
+     var res = wx.getSystemInfoSync();
+      if (res.model.search('iPhone X') !== -1) {
+        this.iphoneX = true;
+      } else {
+        this.iphoneX = false;
+      }
+      if (this.parent_data.login_token !== '') {
+         this.infoShow();
+      } else {
+        this.$redirect('secLogin',{backUrl: 'tosenda'});
+      }
+  }
+
+
+}
+</script>

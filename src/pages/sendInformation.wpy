@@ -1,0 +1,363 @@
+<style lang="less">
+.sendInformationBox {
+  padding: 70rpx 78rpx 0;
+  min-height: 100%;
+  view,
+  input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .titleInfo {
+    font-size: 24rpx;
+    line-height: 46rpx;
+    margin-bottom: 55rpx;
+    .titlestatut {
+      font-size: 28rpx;
+      margin-bottom: 33rpx;
+    }
+    text {
+      color: #ff0000;
+      &:nth-of-type(1) {
+        font-weight: bold;
+      }
+    }
+  }
+  .information {
+    line-height: 78rpx;
+    font-size: 26rpx;
+    margin-bottom: 24rpx;
+    input {
+      line-height: 50rpx;
+      height: 50rpx;
+      width: 100%;
+      border-bottom: 1px solid #000;
+      font-size: 24rpx;
+    }
+  }
+  .gray {
+    color: #817f7f;
+  }
+  picker {
+    margin-bottom: 64rpx;
+    border-bottom: 1px solid #000;
+  }
+  .modal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .modal-content {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 40%;
+    min-height: 300rpx;
+    background: #fff;
+    position: relative;
+    border-radius: 10rpx;
+    padding: 60rpx 0 0;
+    .modal-top{
+        font-size:22rpx;
+        line-height: 40rpx;
+        color:red;
+        padding-left:35rpx;
+        display: flex;
+        icon{
+            margin-right:22rpx;
+            display: flex;
+        }
+    }
+    .modal-body{
+        font-size: 28rpx;
+        line-height: 54rpx;
+        padding:30rpx 0 40rpx 95rpx;
+    }
+    .modal-footer{
+        height:80rpx;
+        line-height: 80rpx;
+        border-top:1rpx #bfbfbf solid;
+        display: flex;
+        >text{
+            width:50%;
+            text-align: center;
+            color:#757575;
+            &:nth-of-type(1){
+                color:#2a2a2a;
+                border-right:1rpx #bfbfbf solid;
+            }
+        }
+    }
+  }
+  .show-btn {
+    width: 510rpx;
+    height: 69rpx;
+    margin: 153rpx auto 452rpx;
+    background: #6044cb;
+    border-radius: 4rpx;
+    color: #fff;
+    font-size: 26rpx;
+    line-height: 69rpx;
+    text-align: center;
+  }
+}
+</style>
+<template>
+    <view class="sendInformationBox">
+        <view>
+            <view class="titleInfo">
+                <view class="titlestatut" wx:if="{{settlementStatus==0}}">您的合同
+                    <text class="infoNo">{{contractNo}}</text>即将到期，我们将在贷款结清后，把
+                    <text>登记证及相关解除抵押材料</text>寄送给您。
+                </view>
+                <view class="titlestatut" wx:else>您的合同
+                    <text class="infoNo">{{contractNo}}</text>已经结清，我们将会把
+                    <text>登记证及相关解除抵押材料</text>寄送给您。
+                </view>
+                <view>请务必仔细填写以下收件信息，以免材料丢失，谢谢！</view>
+            </view>
+               <view class="information">
+                <view>车牌号</view>
+                <input
+                    type="text"
+                    data-name="carPlate"
+                    value="{{carPlate}}"
+                    @input="changeValue"
+                    placeholder="请填写车牌号"
+                />
+            </view>
+            <view class="information">
+                <view>收件人</view>
+                <input
+                    type="text"
+                    data-name="recipients"
+                    value="{{recipients}}"
+                    @input="changeValue"
+                    placeholder="请填写收件人姓名"
+                />
+            </view>
+            <view class="information">
+                <view>收件人联系电话</view>
+                <input
+                    type="number"
+                    data-name="rePhone"
+                    value="{{rePhone}}"
+                    @input="changeValue"
+                    placeholder="请填写收件人联系电话"
+                />
+            </view>
+            <view class="information">
+                <view>收件地址</view>
+                <picker
+                    mode="region"
+                    bindchange="bindRegionChange"
+                    value="{{region}}"
+                    custom-item="{{customItem}}"
+                >
+                    <view class="picker {{default=='请选择地区'?'gray':''}}">{{default}}</view>
+                </picker>
+                <input
+                    type="text"
+                    data-name="reginInfo"
+                    value="{{reginInfo}}"
+                    @input="changeValue"
+                    placeholder="请填写详细地址"
+                />
+            </view>
+            <button class="show-btn" bindtap="showDialogBtn">提交</button>
+        </view>
+        <view hidden="{{!isShow}}">
+            <view class="modal">
+                <view class="modal-content">
+                    <view class="modal-top">
+                        <icon type="warn" size="20" color="red"/>
+                        <view class="header">                           
+                          请再次确认您的收件信息，以免材料丢失，谢谢！
+                        </view>
+                    </view>
+                    <view class="modal-body">
+                        <view>车牌号:{{carPlate}}</view>
+                        <view>收件人：{{recipients}}</view>
+                        <view>联系电话：{{rePhone}}</view>
+                        <view>收件地址：{{readdress}}</view>
+                    </view>
+                    <view class="modal-footer">
+                        <text class="sure" catchtap="_confirmEvent">确认提交</text>
+                        <text class="cancle" catchtap="_cancelEvent">取消</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+import toastInfo from '../components/toastInfo';
+export default class sendInformation extends wepy.page {
+  config = {
+    navigationBarTitleText: '结清材料'
+  };
+  components = {
+    toastInfo: toastInfo
+  };
+  data = {
+    url_link: '',
+    settlementStatus: 0,
+    position: '',
+    region: ['广东省', '广州市', '海珠区'],
+    customItem: '全部',
+    default: '请选择地区',
+    isShow: false,
+    recipients:"",
+    readdress: '',
+    rePhone:"",
+    reginInfo:"",
+    contractNo:"",
+    carPlate:"",
+    contractId:"",
+    status:""
+    
+  };
+  methods = {
+    //选择地址
+    typeChange: function(val) {
+      this.position = val.detail.value;
+      console.log(this.position);
+    },
+    //更改input的值
+    changeValue: function(e) {
+      this[e.currentTarget.dataset.name] = e.detail.value;
+    },
+    bindRegionChange: function(e) {
+     // console.log('picker发生选择改变，携带值为', e.detail.value);
+      this.region = e.detail.value;
+      this.default = this.region;
+      this.$apply();
+    },
+    showDialogBtn: function() {
+      var that=this;
+      if(that.recipients !='' && that.rePhone !='' && that.region !='' && that.reginInfo !=''){
+           if (!that.$invoke('toastInfo','phoneReg',that.rePhone)) {
+              that.$invoke('toastInfo', 'modelFunc', '000', '请输入正确的手机号');
+              return false;
+            }
+        that.isShow = true;
+        that.readdress=that.region.join("")+that.reginInfo;
+      }else{
+         that.$invoke('toastInfo', 'modelFunc', '000', '请填写完整的寄件信息')
+          return false;
+      }
+      
+    },
+    _cancelEvent: function() {
+      this.isShow = false;
+    },
+    _confirmEvent:function(){
+        var that=this;
+        that.isShow = false;
+        //  wx.navigateTo({
+        //     url: 'settlement'
+        //   });
+
+const templateId="U0QKYMFtu6wXdpYtHQKl55hu9kOWq0DNncb4D2cKSiM";
+wx.requestSubscribeMessage({
+  tmplIds:[templateId],
+  success(res){
+     var item={
+        "address":that.readdress,
+         "name":that.recipients,
+         "phone":that.rePhone,
+         "contractId":that.contractId,
+         "carPlate":that.carPlate,
+         "externalContractNbrL":that.contractNo,
+         "contractId":that.contractId,
+         "status":that.status
+       }
+    if(res[templateId]=='accept'){
+      //用户同意了订阅，允许订阅消息
+      console.log(1111);
+      wx.showToast({
+        title:'订阅成功'
+      })
+
+    wx.request({
+      //url:that.parent_data.json_dhLink + '/delivery/add',
+      //url:'http://localhost:8088/settlement.json',
+      url:'http://test-webapi.dongzhengafc.com:9113/delivery/add',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
+      method: 'POST',
+      data: {
+          loginToken: that.parent_data.login_token,
+          userId: that.parent_data.login_userId,
+          address:that.readdress,
+          name:that.recipients,
+          phone:that.rePhone,
+          contractId:that.contractId,
+          carPlate:that.carPlate
+         // status:that.state
+        // phone: that.parent_data.login_phone // phone: 'shhllfmsksl'
+      },
+      success: function(res) {
+     if (res.data.code == '10001') {
+       console.log(res)
+       debugger
+   
+           that.$navigate('tosenda',item);
+          } else {
+            that.$invoke('toastInfo', 'modelFunc', res.data.code, res.data.msg);
+            
+          }
+      },
+      fail: function() {
+        wx.showToast({
+          title: '网络异常',
+          icon: 'none'
+        });
+        setTimeout(function() {
+          wx.hideToast();
+        }, 2000);
+        return;
+      }
+    });  
+
+    }else{
+      console.log(2222);
+      //用户拒绝了订阅，禁用订阅消息
+      wx.showToast({
+        title:'订阅失败'
+      })
+       that.$navigate('tosenda',item);
+    }
+  },
+  fail(err){
+    console.error(err);
+  }
+})
+    }
+  };
+
+  onLoad(res){
+    var that=this;
+    console.log(res);
+    if(res.externalContractNbr!=undefined){
+      that.contractNo=res.externalContractNbr;
+      that.contractId=res.contractId;
+      that.status=res.status
+    }
+  }
+  onShow(){
+     let that = this;
+      that.url_link = that.$parent.globalData.url_link;
+      that.parent_data = that.$parent.globalData;
+  }
+
+
+}
+
+</script>
