@@ -19,7 +19,7 @@
     width: 88%;
     font-size: 24rpx;
     margin: 0 auto;
-    lint-height: 38rpx;
+    line-height: 38rpx;
     border: 1rpx rgb(0, 199, 174) solid;
     padding: 4rpx;
     border-radius: 10rpx;

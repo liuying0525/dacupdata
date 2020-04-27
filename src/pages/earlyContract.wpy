@@ -190,12 +190,12 @@
             <view class="textItem">
                 <text>合同结束日期</text><input value="{{contractData.contractEndDate}}" type="text" disabled/>
             </view>
-            <!-- <view class="textItem">
+            <view class="textItem">
                 <text>合同期数</text><input value="{{contractData.totalPeriods}}" type="text" disabled/>
             </view>
             <view class="textItem">
                 <text>剩余期数</text><input value="{{contractData.surplusPeriods }}" type="text" disabled/>
-            </view> -->
+            </view>
             <view class="textItem">
                 <text>还款频率</text><input value="{{contractData.payRate}}" type="text" disabled/>
             </view>

@@ -84,7 +84,7 @@
             .itemState {
                 position: absolute;
                 right: 32rpx;
-                bottom:384rpx;
+                bottom:0;
                 z-index: -2;
                 image{
                     height:105rpx ;
@@ -207,6 +207,10 @@ margin: 0 auto;
         justify-content: center;
 
       }
+
+    }
+    .itemType{
+      position:relative;
     }
 </style>
 <template>
@@ -259,9 +263,6 @@ margin: 0 auto;
                     <!--<text class="changeBtn editBtn" @tap="edit({{item}})">修改申请</text>-->
                 </view>
               
-                <view class="itemState">
-                    <image src="{{url_link?url_link+ states[state]:''}}"></image>
-                </view>
                        <view class="reOpen" wx:if="{{state == 1 && item.status==3}}" @tap="edit({{item}})">重新发起此申请</view>
             <!-- <view class="reOpen noOpen" wx:if="{{state == 1 && item.status!=3}}">重新发起此申请</view> -->
               <view class="reOpen" wx:if="{{state==1 && item.canSettle == 1}}"  @tap="paymentSubmit({{item}})">结清材料申请</view>
