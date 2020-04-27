@@ -1,9 +1,0 @@
-
-    <view class="indemnityState">
-        <view class="title">理赔函进度</view>
-        <view class="stateIcon">
-            <image src="{{url_link?url_link+stateIcon[stateNum]:''}}" mode="aspectFit"/>
-        </view>
-        <view class="stateText">{{stateText[stateNum]}}</view>
-        <view class="stateDesc">{{stateDesc[stateNum]}}</view>
-    </view>

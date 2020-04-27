@@ -7,7 +7,6 @@
       height: 125rpx;
       width: 125rpx;
       margin: 0 auto;
-<<<<<<< HEAD
     }
   }
   .inputBox {
@@ -50,50 +49,6 @@
       right: 40rpx;
       bottom: -40rpx;
     }
-=======
-    }
-  }
-  .inputBox {
-    width: 100%;
-    padding: 0 40rpx;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    position: relative;
-    margin-bottom: 68rpx;
-    overflow: hidden;
-    input {
-      display: block;
-      margin: 0 auto;
-      height: 68rpx;
-      border: 1px solid #5c45c3;
-      -webkit-border-radius: 10rpx;
-      -moz-border-radius: 10rpx;
-      border-radius: 10rpx;
-      padding: 0 30rpx;
-      font-size: 26rpx;
-    }
-    .button {
-      margin: 0 auto;
-      height: 68rpx;
-      line-height: 68rpx;
-      -webkit-border-radius: 10rpx;
-      -moz-border-radius: 10rpx;
-      border-radius: 10rpx;
-      background: #5c45c3;
-      color: #fff;
-      font-size: 28rpx;
-      text-align: center;
-    }
-    .errorInfo {
-      position: absolute;
-      color: #ff0202;
-      font-size: 22rpx;
-      text-align: right;
-      right: 40rpx;
-      bottom: -40rpx;
-    }
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
     .codeInput {
       display: block;
       height: 68rpx;
@@ -153,11 +108,7 @@
   <view class="secLogin">
     <view class="goMy" @tap="goMy" wx:if="{{backUrl!=''&&backUrl!='my'}}">个人中心</view>
     <view class="header">
-<<<<<<< HEAD
       <image src="{{url_link?url_link+'/loginLogo.png': ''}}"/>
-=======
-      <image src="{{url_link?url_link+'/loginLogo.png': ''}}">
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
     </view>
     <view class="inputBox">
       <input
@@ -167,11 +118,7 @@
         data-name="phone"
         value="{{phone}}"
         @input="changeValue"
-<<<<<<< HEAD
       />
-=======
-      >
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
       <view class="errorInfo">*登录手机号须与贷款合同填写手机号保持一致</view>
     </view>
     <view class="inputBox">
@@ -181,11 +128,7 @@
         data-name="password"
         value="{{password}}"
         @input="changeValue"
-<<<<<<< HEAD
       />
-=======
-      >
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
     </view>
     <view class="inputBox">
       <input
@@ -195,11 +138,7 @@
         data-name="code"
         value="{{code}}"
         @input="changeValue"
-<<<<<<< HEAD
       />
-=======
-      >
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
       <view
         class="codeBtn {{getCodeTime !=60 ? 'codeBtnNo' : ''}}"
         @tap="getCode"
@@ -207,19 +146,11 @@
     </view>
     <view class="inputBox" style="margin-bottom: 26rpx;">
       <view class="button" @tap="login">登录</view>
-<<<<<<< HEAD
     </view>
     <view class="inputBox">
       <text class="forget" @tap="goForget">忘记密码</text>
       <text class="register" @tap="goRegister">注册新账号</text>
     </view>
-=======
-    </view>
-    <view class="inputBox">
-      <text class="forget" @tap="goForget">忘记密码</text>
-      <text class="register" @tap="goRegister">注册新账号</text>
-    </view>
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
   </view>
 </template>
 <script>
@@ -245,12 +176,8 @@ export default class secLogin extends wepy.page {
     onblurBtn: false,
     rephone: '',
     clickBtn: 0,
-<<<<<<< HEAD
     inter:"",
     isenter:0
-=======
-    inter:{}
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
   };
   methods = {
     changeValue: function(e) {
@@ -259,7 +186,6 @@ export default class secLogin extends wepy.page {
    
     getCode: function(e) {
       let that = this;
-<<<<<<< HEAD
       if (that.clickBtn != 0) 
       {
          return false; 
@@ -267,9 +193,6 @@ export default class secLogin extends wepy.page {
       else
       {
         if (that.phone == '') {
-=======
-       if (that.phone == '') {
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
           that.$invoke('toastInfo', 'modelFunc', '000', '请输入手机号');
           return false;
         }
@@ -277,18 +200,8 @@ export default class secLogin extends wepy.page {
           that.$invoke('toastInfo', 'modelFunc', '000', '请输入正确的手机号');
           return false;
         }
-<<<<<<< HEAD
         that.clickBtn=1;
         that.isenter=0;
-=======
-      if (that.clickBtn != 0) 
-      {
-         return false; 
-      }
-      else
-      {
-        that.clickBtn=1;
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
         that.interTime();
         that.getCodeFunc();
       }
@@ -374,7 +287,6 @@ export default class secLogin extends wepy.page {
 
   interTime(){
       let that = this;
-<<<<<<< HEAD
       var inter = setInterval(()=>{
       console.log("that.getCodeTime--=="+that.getCodeTime);
       if(that.getCodeTime!=0 && that.getCodeTime<=60){//这样又会进入无线循环  我都说了初始值60就是有问题的。你看着，我试给你看
@@ -402,24 +314,10 @@ export default class secLogin extends wepy.page {
       },1000);
       this.$apply();
    
-=======
-      
-      that.inter = setInterval(function() {
-      that.getCodeTime--;
-      that.$apply();
-      if (that.getCodeTime == 0) {
-         clearInterval(that.inter);
-          that.getCodeTime=60; 
-          that.clickBtn=0; 
-          that.$apply(); 
-        }
-      },1000);
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
   }
   setCache()
   {
     let that = this;
-<<<<<<< HEAD
 
     wx.setStorageSync('wxphpne', that.phone);
 
@@ -457,36 +355,6 @@ export default class secLogin extends wepy.page {
       },
       fail: function(res) {
          that.$invoke('toastInfo', 'modelFunc', res.data.code, res.data.msg);
-=======
-    if(that.getCodeTime==60)
-    return;
-    var oldtime = Date.parse(new Date());
-    var time = {
-       oldtime: oldtime,
-       alreadytime: that.getCodeTime
-     };
-     wx.setStorageSync('alreadytime', time);
-  }
-  // 获取验证码
-  getCodeFunc() {
-    let that = this;
-    wx.request({
-      url: that.parent_data.json_dhLink + '/sms/login',
-      data: {
-        telephone: that.phone
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method: 'POST',
-      success: function(res) {
-        if (res.data.code == '10001') {
-      
-        } else {
-
-          that.$invoke('toastInfo', 'modelFunc', res.data.code, res.data.msg);
-        }
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
       }
     });
   }
@@ -515,7 +383,6 @@ export default class secLogin extends wepy.page {
   onShow(options) {
     let that = this;
     var oldalreadytime = wx.getStorageSync('alreadytime');
-<<<<<<< HEAD
 
     that.phone=wx.getStorageSync('wxphpne');
 
@@ -529,22 +396,10 @@ export default class secLogin extends wepy.page {
              that.clickBtn=0;
              that.isenter=1;
              that.$apply();
-=======
-    if (!!oldalreadytime)
-    {
-       var nowtime = Date.parse(new Date());
-       var second = parseInt((nowtime - oldalreadytime.oldtime) / 1000);
-       //console.log("缓存时间="+second);
-        if(second>60)
-        {
-            that.getCodeTime=60;
-            that.clickBtn=0; 
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
         }
         else
         {
             var stime=oldalreadytime.alreadytime-second;
-<<<<<<< HEAD
             if(stime<=0)
             {
                 that.isenter=1;
@@ -563,23 +418,6 @@ export default class secLogin extends wepy.page {
         that.$apply();
     }
   
-=======
-           // console.log("stime="+stime+",oldalreadytime.alreadytime="+oldalreadytime.alreadytime);
-            if(stime<=0)
-            {
-                that.getCodeTime=60;
-                that.clickBtn=0; 
-            }
-            else
-            {
-                that.getCodeTime=stime;
-                that.clickBtn=1;    
-            }
-              that.$apply();
-        }
-  
-    }
->>>>>>> c060c3913dfab925ba6335066e8311cf17f739b4
     wx.removeStorageSync("alreadytime");
   }
 }

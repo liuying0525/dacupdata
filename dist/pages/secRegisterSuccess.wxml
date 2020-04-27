@@ -1,8 +1,0 @@
-
-    <view class="secRegisterSuccess">
-        <view class="successIcon">
-            <image src="{{url_link?url_link + '/cancelS.png' : ''}}"/>
-        </view>
-        <view class="successTitle">注册成功!</view>
-        <view class="earlyBtn" bindtap="goLogin">确定</view>
-    </view>
