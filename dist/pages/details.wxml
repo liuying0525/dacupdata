@@ -1,0 +1,258 @@
+
+  <view>
+    
+  <block  wx:if="{{$userinfo_alert$zt}}">
+    <view class="wrap">
+      <view class="alert">
+        <view class="alert_text">{{$userinfo_alert$text_}}</view>
+        <button class="alert_btn" open-type="getUserInfo" bindgetuserinfo="$userinfo_alert$bindGetUserInfo">确定</button>
+      </view>
+    </view>
+  </block>
+
+    
+  <block  wx:if="{{$alert_l$zt}}">
+    <view class="wrap">
+      <view class="alert">
+        <view class="alert_text">{{$alert_l$text_}}</view>
+        <button class="alert_btn" open-type="getPhoneNumber" bindgetphonenumber="$alert_l$bindalertInfo">确定</button>
+      </view>
+    </view>
+  </block>
+
+    <view class="container">
+      <view>
+        <view class="details_header">
+          <image class="details_header_img" src="{{wp.images[0]}}" mode="widthFix"/>
+        </view>
+        <view class="sidebar_list">
+          <view class="sidebar_list_right">
+            <image class="list_che" src="{{xq_sj.carmodelJO.imgurl}}" mode="aspectFit"/>
+          </view>
+          <view class="sidebar_list_left">
+            <text class="list_left sidebar_list_title">{{xq_sj.carmodelJO.name}}</text>
+            <text class="list_left sidebar_list_rmb">¥ {{xq_sj.carmodelJO.price/10000}}万</text>
+          </view>
+        </view>
+        <view class="details_table">
+          <view class="details_table_nr">
+            <view class="details_table_nr_list">首付</view>
+            <view class="details_table_nr_list">分期额度</view>
+            <view class="details_table_nr_list">月供</view>
+            <view class="details_table_nr_list"  wx:if="{{xq_sj.financialproductinfoJO.tailmoney == '0'?false:true}}">尾款</view>
+          </view>
+          <view class="details_table_nr details_nr_nr">
+            <view class="details_table_nr_list"><text class="details_red">{{xq_sj.financialproductinfoJO.downpayment}}</text>万</view>
+            <view class="details_table_nr_list"><text class="details_red">{{xq_sj.financialproductinfoJO.financing_amt}}</text>万</view>
+            <view class="details_table_nr_list"><text class="details_red">{{xq_sj.financialproductinfoJO.monthlysupply}}元 ({{onload_res.loanterm}}月)</text></view>
+            <view class="details_table_nr_list"  wx:if="{{xq_sj.financialproductinfoJO.tailmoney == '0'?false:true}}"><text class="details_red">{{xq_sj.financialproductinfoJO.tailmoney}}</text>万</view>
+          </view>
+        </view>
+        <view class="programme-cont">
+          <view class="programme-r">
+            <!-- 首付 -->
+            <view class="select-item">
+              <text class="text1">首付</text>
+              <view class="select-cont">
+                <view class="slider-cont">
+                  
+  <view class="slider slider__bg" id="mySlider" style="height: 40rpx;">
+
+    <view class="slider__progress">
+      <view class="progress progress__bg"/>
+    </view>
+
+    <view class="slider__line" style="width: {{($shoufuSlider$values - $shoufuSlider$min) / ($shoufuSlider$max - $shoufuSlider$min) * $shoufuSlider$width}}rpx;">
+    </view>
+
+    <image src="{{$shoufuSlider$blockUrl}}" style="left: {{($shoufuSlider$values - $shoufuSlider$min ) / ($shoufuSlider$max - $shoufuSlider$min) * $shoufuSlider$width - 40}}rpx;" bindtouchstart="$shoufuSlider$sliderStart" bindtouchmove="$shoufuSlider$sliderChange" bindtouchend="$shoufuSlider$sliderEnd" bindtouchcancel="$shoufuSlider$sliderCancel" class="block-image"/>
+
+  </view>
+
+                </view>
+                <view class="nums">
+                  <text>20</text>
+                  <text>30</text>
+                  <text>40</text>
+                  <text>50</text>
+                  <text>60</text>
+                  <text>70</text>
+                </view>
+              </view>
+              <text class="text2">{{shoufuValueNum}}</text>
+            </view>
+            <!-- 期限 -->
+            <view class="select-item">
+              <text class="text1">期限</text>
+              <view class="select-cont">
+                <view class="slider-cont">
+                  
+  <view class="slider slider__bg" id="mySliders" style="height: 40rpx;">
+
+    <view class="slider__progress">
+      <view class="progress progress__bg"/>
+    </view>
+
+    <view class="slider__line" style="width: {{($qixianSlider$values - $qixianSlider$min) / ($qixianSlider$max - $qixianSlider$min) * $qixianSlider$width}}rpx;">
+    </view>
+
+    <image src="{{$qixianSlider$blockUrl}}" style="left: {{($qixianSlider$values - $qixianSlider$min ) / ($qixianSlider$max - $qixianSlider$min) * $qixianSlider$width - 40}}rpx;" bindtouchstart="$qixianSlider$sliderStart" bindtouchmove="$qixianSlider$sliderChange" bindtouchend="$qixianSlider$sliderEnd" bindtouchcancel="$qixianSlider$sliderCancel" class="block-image"/>
+
+  </view>
+
+                </view>
+                <view class="nums">
+                  <text wx:for="{{testList}}" wx:key="key">{{item}}</text>
+                </view>
+              </view>
+              <text class="text2">{{qixianValueNum}}</text>
+            </view>
+            <!-- 尾款 -->
+            <view class="select-item" wx:if="{{wp.tailmoneypercent != 0}}">
+              <text class="text1">尾款</text>
+              <view class="select-cont">
+                <view class="slider-cont">
+                  <slider class="slider_kuai" block-size="20" disabled="true" value="{{wp.tailmoneypercent}}" selected-color="#00c7ae" min="0" max="100"/>
+                </view>
+              </view>
+              <text class="text2">{{wp.tailmoneypercent}}%</text>
+            </view>
+          </view>
+        </view>      
+        <view class="dao">
+        <view class="anan" bindtap="click_cx">
+          <view class="anan-texts">
+            <text>快速</text>
+            <text>导航</text>
+          </view>
+        </view>
+        <view class="an {{isTouch ? 'right_sidebar_xz_right_touch' : ''}}">
+          <view class="shous" bindtap="shouye"><image class="xc1" src="{{url_link?url_link+'zhzhuce.png':''}}"/>新车贷款</view>
+          <!--<view class="shous" bindtap="zhizhu"><image class="xc2" src="{{url_link?url_link+"zhu.png"></image>直租</view>-->
+          <view class="shous" bindtap="wode"><image class="xc3" src="{{url_link?url_link+'dingd.png':''}}"/>我的订单</view>
+        </view>
+        </view>
+        <view class="details_hui">
+          预约门店
+          <view class="yuyue_btn" bindtap="toMendian" data-wpytomendian-a="{{wp.financial_product_id}}" data-wpytomendian-b="{{wpid}}">选择门店</view>
+        </view>
+        <view class="details_bai yuyue">
+          <view class="yuyue_name">{{md.business_partner_nme}}</view>
+          <view class="yuyue_dizhi iconfont icon-dingwei"><text class="dizhi_text">{{md.state_nme}}{{md.building_nme}}</text></view>
+        </view>
+        <view class="details_xf" style="padding-bottom:{{btuBottom}}">
+          <view class="details_xf_2" bindtap="tap_sc">
+            <image hidden="{{collected}}" class="s" src="{{url_link?url_link+'wsc.png':''}}" mode="aspectFit"/>
+            <image hidden="{{!collected}}" class="s" src="{{url_link?url_link+'ysc.png':''}}" mode="aspectFit"/>
+              <text style="color: #000;" class="d_icon">{{collected ? '已收藏' : '收藏'}}</text>
+          </view>
+          <view class="details_xf_3" bindtap="tap_tel"><text class="d_icon details_xf_3_icon iconfont icon-kefu"><text style="color: #ffffff" class="d_icon">咨询客服</text></text></view>
+          <form class="details_xf_5" report-submit bindsubmit="bindsubmit">
+            <view class="ann" bindtap="tap_ljsq"><button hover-class="none" formType="submit"><text class="d_icon details_xf_5_icon iconfont icon-Group"/>申请</button></view>
+          </form>
+        </view>
+        <view class="testresult">
+            <!-- <view>贷款详情</view>
+            <view>购车说明</view> -->
+          <view class="financial-tab">
+            <view class="{{selected?'orange':'defaulf'}}" data-w="w" bindtap="select">贷款详情</view>
+            <view class="{{select?'orange':'defaulf'}}" data-y="y" bindtap="select">购车说明</view>
+          </view>
+          <view class="{{selected?'show':'hidden'}}">
+            <block wx:for="{{wp.images}}" wx:key="key">
+              <view class="details_headers" data-index="{{index}}" wx:if="{{index=='0'?false:true}}">
+                <image class="details_header_img" src="{{item}}" mode="widthFix"/>
+              </view>
+            </block>
+          </view>
+          <view class="{{select?'show':'hidden'}}">
+            <view class="financial-biaoti">
+              购买须知
+            </view>
+
+            <view class="financial-biaoti-xia">
+              <view class="financial-biaoti-xia1">保险</view>
+              <view class="financial-biaoti-xia2">
+                在合同有效期内，借款人应将贷款所涉车辆向保险公司连续投保车辆损失险，第三方责任险，盗抢险和其他必要的附加险，投保额不得低于车辆的现值，保单的总有效期不得短于本合同的有效期。借款人应在保险单中注明第一受益人为上海东正汽车金融股份有限公司。
+              </view>
+            </view>
+            <view class="financial-biaoti-xia4">
+              <view class="financial-biaoti-xia3">上牌</view>
+              <view class="financial-biaoti-xia2">上牌手续由4S店负责办理</view>
+            </view>
+            <view class="financial-biaoti-xia4">
+              <view class="financial-biaoti-xia3">还款</view>
+              <view class="financial-biaoti-xia2">东正金融每月通过您绑定的银行卡内扣除月供</view>
+            </view>
+            <view class="financial-biaoti">
+              购买须知
+            </view>
+
+            <view class="financial-div">
+              <view class="financial-div1">
+                <view class="financial-liucheng-tu">
+                  <image src="{{url_link?url_link+'sq.png':''}}" class="financial-liucheng-tu1"/>
+                  <image src="{{url_link?url_link+'jiantou.png':''}}" class="financial-liucheng-tu2"/>
+                </view>
+                <view class="financial-liucheng-wenzi">
+                  <view class="financial-liucheng-wenzi3">
+                    <view class="financial-liucheng-wenzi1">线上申请</view>
+                    <view class="financial-liucheng-wenzi2">选择心仪车型,填写名字,手机号等相关材料提交线上申请</view>
+                  </view>
+                </view>
+              </view>
+              <view class="financial-div1">
+                <view class="financial-liucheng-tu">
+                  <image src="{{url_link?url_link+'goutong.png':''}}" class="financial-liucheng-tu1"/>
+                  <image src="{{url_link?url_link+'jiantou.png':''}}" class="financial-liucheng-tu2"/>
+                </view>
+                <view class="financial-liucheng-wenzi">
+                  <view class="financial-liucheng-wenzi3">
+                    <view class="financial-liucheng-wenzi1">顾问沟通</view>
+                    <view class="financial-liucheng-wenzi2">我们销售顾问会在24小时内为您安排一对一的服务</view>
+                  </view>
+                </view>
+              </view>
+              <view class="financial-div1">
+                <view class="financial-liucheng-tu">
+                  <image src="{{url_link?url_link+'xin.png':''}}" class="financial-liucheng-tu1"/>
+                  <image src="{{url_link?url_link+'jiantou.png':''}}" class="financial-liucheng-tu2"/>
+                </view>
+                <view class="financial-liucheng-wenzi">
+                  <view class="financial-liucheng-wenzi3">
+                    <view class="financial-liucheng-wenzi1">信用评估</view>
+                    <view class="financial-liucheng-wenzi2">线下提供简单资质材料，等待贷款审核</view>
+                  </view>
+                </view>
+              </view>
+              <view class="financial-div1">
+                <view class="financial-liucheng-tu">
+                  <image src="{{url_link?url_link+'zhifu.png':''}}" class="financial-liucheng-tu1"/>
+                  <image src="{{url_link?url_link+'jiantou.png':''}}" class="financial-liucheng-tu2"/>
+                </view>
+                <view class="financial-liucheng-wenzi">
+                  <view class="financial-liucheng-wenzi3">
+                    <view class="financial-liucheng-wenzi1">支付首付</view>
+                    <view class="financial-liucheng-wenzi2">通知审批通过放款成功，支付首付</view>
+                  </view>
+                </view>
+              </view>
+              <view class="financial-div1">
+                <view class="financial-liucheng-tu">
+                  <image src="{{url_link?url_link+'guoqi.png':''}}" class="financial-liucheng-tu1"/>
+                  <image src="{{url_link?url_link+'jiantou.png':''}}" class="financial-liucheng-tu2"/>
+                </view>
+                <view class="financial-liucheng-wenzi">
+                  <view class="financial-liucheng-wenzi3">
+                    <view class="financial-liucheng-wenzi1">到店提车</view>
+                    <view class="financial-liucheng-wenzi2">办理买车手续，提车回家。小程序或者东正金融微信公众号上查询还款账单，接收还款提醒。</view>
+                  </view>
+                </view>
+              </view>
+
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

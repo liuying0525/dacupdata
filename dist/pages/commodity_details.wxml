@@ -1,0 +1,186 @@
+
+  <view>
+    
+  <view>
+  <view class="{{$sidebarck$sidebar_?'sidebar_yinying2':'sidebar_yinying'}}" bindtap="$sidebarck$clear_yy"/>
+  <view class="{{$sidebarck$sidebar_?'right_sidebarg':'right_sidebar_false'}}">
+ 
+   <view class="sidebar">
+      <scroll-view class="sidebar_rightg" scroll-y>
+        <view class="sidebar_bq_ck">
+          <image class="sidebar_pp_logo" src="{{$sidebarck$json_val.carbrandimgurl}}" mode="aspectFit"/>
+          <text class="sidebar_pp">{{$sidebarck$json_val.carseriesname}}</text>
+        </view>
+        <view  wx:for="{{$sidebarck$json_val.carmodelyearJA}}">
+          <view class="sidebar_hui_ck">
+            <text>{{item.year}}</text>
+          </view>
+          <view class="sidebar_list_ck">
+            <view class="sidebar_list_left_cks  ck_jiage">
+              <text class="list_left sidebar_list_title_ck">车款<text class="ck_list_right">价格</text></text>
+              <!-- <text class="iconfont icon-paixu"></text> -->
+            </view>
+          </view>
+            <view class="sidebar_list_cks" wx:for="{{item.carmodelJA}}" wx:key="key">
+              <view class="sidebar_list_left_cks" bindtap="$sidebarck$click_btn" data-wpyclick_btn-a="{{item.carmodelid}}">
+                <view class="list_lefts sidebar_list_title_ck">
+                  <view class="sidebar_name">{{item.name}}</view>
+                  <text class="ck_list_right">{{item.price/10000}}万</text>
+                </view>
+              </view>
+            </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+
+
+
+
+  </view>
+
+    <view class="container">
+      <view class="c_details_h">
+        <image class="c_details_sp" src="{{xq_sj.imgurl}}" mode="widthFix"/>
+      </view>
+      <view class="sidebar_list_ck" bindtap="ck_btn" data-wpyck_btn-a="{{xq_sj.carseriesid}}">
+        <view class="sidebar_list_left_ck">
+          <view class="c_details_jt iconfont icon-jiantou"/>
+          <view class="list_left sidebar_list_rmb_ck">新手指导价￥
+            <text style="float: right;margin-right: 70rpx">{{xq_sj.price/10000}}万</text>
+          </view>
+          <text class="list_left sidebar_list_title_ck">{{xq_sj.name}}</text>
+        </view>
+      </view>
+      <view class="programme-cont">
+        <view class="programme-r">
+          <!-- 首付 -->
+          <view class="select-item">
+            <text class="text1">首付</text>
+            <view class="select-cont">
+              <view class="slider-cont">
+                
+  <view class="slider slider__bg" id="mySlider" style="height: 40rpx;">
+
+    <view class="slider__progress">
+      <view class="progress progress__bg"/>
+    </view>
+
+    <view class="slider__line" style="width: {{($shoufuSlider$values - $shoufuSlider$min) / ($shoufuSlider$max - $shoufuSlider$min) * $shoufuSlider$width}}rpx;">
+    </view>
+
+    <image src="{{$shoufuSlider$blockUrl}}" style="left: {{($shoufuSlider$values - $shoufuSlider$min ) / ($shoufuSlider$max - $shoufuSlider$min) * $shoufuSlider$width - 40}}rpx;" bindtouchstart="$shoufuSlider$sliderStart" bindtouchmove="$shoufuSlider$sliderChange" bindtouchend="$shoufuSlider$sliderEnd" bindtouchcancel="$shoufuSlider$sliderCancel" class="block-image"/>
+
+  </view>
+
+              </view>
+              <view class="nums">
+                <text>20</text>
+                <text>30</text>
+                <text>40</text>
+                <text>50</text>
+                <text>60</text>
+                <text>70</text>
+              </view>
+            </view>
+            <text class="text2">{{shoufuValueNum}}</text>
+          </view>
+          <!-- 期限 -->
+          <view class="select-item">
+            <text class="text1">期限</text>
+            <view class="select-cont">
+              <view class="slider-cont">
+                
+  <view class="slider slider__bg" id="mySlider" style="height: 40rpx;">
+
+    <view class="slider__progress">
+      <view class="progress progress__bg"/>
+    </view>
+
+    <view class="slider__line" style="width: {{($qixianSlider$values - $qixianSlider$min) / ($qixianSlider$max - $qixianSlider$min) * $qixianSlider$width}}rpx;">
+    </view>
+
+    <image src="{{$qixianSlider$blockUrl}}" style="left: {{($qixianSlider$values - $qixianSlider$min ) / ($qixianSlider$max - $qixianSlider$min) * $qixianSlider$width - 40}}rpx;" bindtouchstart="$qixianSlider$sliderStart" bindtouchmove="$qixianSlider$sliderChange" bindtouchend="$qixianSlider$sliderEnd" bindtouchcancel="$qixianSlider$sliderCancel" class="block-image"/>
+
+  </view>
+
+              </view>
+              <view class="nums">
+                <text>12</text>
+                <text>24</text>
+                <text>36</text>
+                <text>48</text>
+                <text>60</text>
+              </view>
+            </view>
+            <text class="text2">{{qixianValueNum}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="c_details_fs">
+         <!-- wx:if="{{item.monthlysupply <= 0 ? false : true}}" -->
+        <view class="c_details_fs_list"  wx:for="{{financialproductJA}}" wx:key="key">
+          <view class="c_details_fs_name" wx:if="{{item.line_pro_name!=''?false:true}}">{{item.name}}</view>
+          <view class="c_details_fs_name" wx:if="{{item.line_pro_name!=''?true:false}}">{{item.line_pro_name}}</view>
+          <view style="height: 60rpx;">
+            <text class="c_details_fs_bq_nr" wx:for="{{item.tags}}" wx:key="key">{{item == "" || item == "undefined"?"-":item}}</text>
+          </view>
+          <view class="scheme-tow" wx:if="{{item.activityJO.name}}">
+            <image class="liwu" src="{{url_link?url_link + 'lw@2x.png':''}}"/>{{item.activityJO.name}}</view>
+          <view class="c_details_fs_bq_btn" bindtap="ljsq_btn" data-wpyljsq_btn-a="{{item.financialproductid}}">立即申请</view>
+          <view class="c_details_fs_bq_jg">
+            <view class="c_details_fs_bq_sf">首付
+              <text class="red">{{item.downpayment}}万</text>
+            </view>
+            <view class="c_details_fs_bq_hk">
+              <text class="red">{{item.monthlysupply}}</text>／月
+              <text class="red">起</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="c_details_pz_list">配置信息</view>
+      <view class="c_details_pz_list_bq">基本参数</view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">排量（L)</text>
+        <text class="c_details_xx_right">{{xq_sj.liter == "" || xq_sj.liter == "undefined"? "~":xq_sj.liter}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">最大马力（Ps)</text>
+        <text class="c_details_xx_right">{{xq_sj.engine_power == "" || xq_sj.engine_power=="undefined" ?"~":xq_sj.engine_power}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">变速箱类型</text>
+        <text class="c_details_xx_right">{{xq_sj.gear_type == "" || xq_sj.engine_power=="gear_type"? "~":xq_sj.gear_type}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">排放标准</text>
+        <text class="c_details_xx_right">{{xq_sj.discharge_standard == "" || xq_sj.discharge_standard=="undefined" ? "~":xq_sj.discharge_standard}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">上市日期</text>
+        <text class="c_details_xx_right">{{xq_sj.market_date == "" || xq_sj.market_date=="undefined"? "~":xq_sj.market_date}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">门数</text>
+        <text class="c_details_xx_right">{{xq_sj.door_number == "" || xq_sj.door_number=="undefined"? "~":xq_sj.door_number}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">座位数</text>
+        <text class="c_details_xx_right">{{xq_sj.seat_number == "" || xq_sj.seat_number=="undefined"? "~":xq_sj.seat_number}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">驱动方式</text>
+        <text class="c_details_xx_right">{{xq_sj.drive_type == "" || xq_sj.drive_type=="undefined"? "~":xq_sj.drive_type}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">车身结构</text>
+        <text class="c_details_xx_right">{{xq_sj.car_struct == "" || xq_sj.car_struct=="undefined"? "~":xq_sj.car_struct}}</text>
+      </view>
+      <view class="c_details_pz_list c_details_xx">
+        <text class="c_details_xx_left">车身类型</text>
+        <text class="c_details_xx_right">{{xq_sj.body_type == "" || xq_sj.body_type=="undefined"? "~":xq_sj.body_type}}</text>
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,82 @@
+.cardChange {
+  padding: 84rpx 0;
+}
+.cardChange .title {
+  font-size: 26rpx;
+  text-align: center;
+}
+.cardChange .earlyInfo {
+  width: 546rpx;
+  margin: 130rpx auto 0;
+  font-size: 22rpx;
+  color: #595959;
+  text-align: center;
+}
+.cardChange .stateText {
+  font-size: 40rpx;
+  color: #dd2a3f;
+  text-align: center;
+  margin: 68rpx 0;
+  font-weight: bold;
+}
+.cardChange .stateIcons {
+  height: 600rpx ;
+  width: 58rpx;
+  margin: 0 auto;
+  padding-top: 29rpx;
+}
+.cardChange .circle {
+  position: absolute;
+  width: 58rpx;
+  height: 58rpx;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: #c4c4c4;
+  left: -15rpx;
+}
+.cardChange .line {
+  width: 28rpx;
+  height: 275rpx;
+  background: #c4c4c4;
+  margin: 0 auto;
+  position: relative;
+}
+.cardChange .active {
+  background: #6144cb;
+}
+.cardChange .top {
+  top: -29rpx;
+}
+.cardChange .bottom {
+  bottom: -29rpx;
+}
+.cardChange .left {
+  right: 90rpx;
+  text-align: right;
+}
+.cardChange .right {
+  left: 90rpx;
+  text-align: left;
+}
+.cardChange .time {
+  position: absolute;
+  width: 190rpx;
+  font-size: 32rpx;
+  line-height: 58rpx;
+}
+.noData {
+  width: 500rpx;
+  margin: 300rpx auto;
+}
+.noData image {
+  display: block;
+  height: 252rpx;
+  width: 309rpx;
+  margin: 0 auto;
+}
+.noData .textInfo {
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 120rpx;
+}

@@ -1,0 +1,39 @@
+
+  <view>
+    <view>
+    <view class="view1" bindtap="resdf">不限品牌</view>
+    <view class="wrapper">
+      <list-html leotiancai="{{city}}" binddetail="bindtap" search="{{value}}"/>
+    </view>
+  </view>
+  
+  <view>
+    <view class="{{$sidebar$sidebar_?'sidebar_yinying2':'sidebar_yinying'}}" bindtap="$sidebar$clear_yy"/>
+    <view class="{{$sidebar$sidebar_?'right_sidebar':'right_sidebar_false'}}">
+      <view class="sidebar">
+        <scroll-view class="sidebar_right" scroll-y scroll-top="{{$sidebar$scrollTop}}">
+          <view class="sidebar_bq">
+            <image class="sidebar_pp_logo" src="{{$sidebar$ppai_logo}}" mode="aspectFit"/>
+            <text class="sidebar_pp">{{$sidebar$ppai}}</text>
+          </view>
+          <view  wx:for="{{$sidebar$json_zhi.carseriesJA}}" wx:key="key">
+            <view class="sidebar_hui">
+              <text>{{item.name}}</text>
+            </view>
+            <view class="sidebar_list" wx:for="{{item.cmfcarseriesJA}}" wx:for-item="items" wx:key="key" bindtap="$sidebar$click_tz" data-wpyclick_tz-a="{{items.carseriesid}}">
+              <view class="sidebar_list_left">
+                <text class="list_left sidebar_list_title">{{items.name}}</text>
+                <text class="list_left sidebar_list_rmb">{{items.minprice/10000}}万-{{items.maxprice/10000}}万</text>
+              </view>
+              <view class="sidebar_list_right">
+                <image class="list_che" src="{{items.imgurl}}" mode="aspectFit"/>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+
+
+  </view>

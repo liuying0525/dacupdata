@@ -1,0 +1,60 @@
+.submitSuccess {
+  padding: 110rpx 90rpx;
+}
+.submitSuccess .successIcon {
+  height: 128rpx;
+  width: 128rpx;
+  margin: 0 auto;
+}
+.submitSuccess .successIcon image {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.submitSuccess .successTitle {
+  font-size: 34rpx;
+  color: #000;
+  text-align: center;
+  margin: 54rpx auto 90rpx;
+}
+.submitSuccess .successInfo {
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+.submitSuccess .earlyBtn {
+  width: 546rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  color: #fff;
+  background: #6044cb;
+  font-size: 30rpx;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  margin: 86rpx auto 0;
+  text-align: center;
+}
+.submitSuccess .cancelBtn {
+  width: 546rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  color: #fff;
+  background: #6044cb;
+  font-size: 30rpx;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  border-radius: 10rpx;
+  margin: 86rpx auto 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #6044cb;
+  background: #fff;
+  margin-top: 0;
+}
+.submitSuccess .earlyInfo {
+  width: 546rpx;
+  margin: 30rpx auto 0;
+  font-size: 22rpx;
+  color: #595959;
+  line-height: 36rpx;
+}

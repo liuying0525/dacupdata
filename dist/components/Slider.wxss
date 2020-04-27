@@ -1,0 +1,35 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 60rpx;
+  border-radius: 4rpx;
+}
+.slider__progress {
+  position: absolute;
+}
+.slider__line {
+  position: absolute;
+  height: 6rpx;
+  top: 30rpx;
+  left: 0rpx;
+  border-radius: 4rpx;
+  background-color: #00C7AE;
+}
+.block-image {
+  position: absolute;
+  top: 0;
+  width: 80rpx;
+  height: 80rpx;
+}
+.slider__progress {
+  position: absolute;
+  top: 30rpx;
+  left: 0;
+  right: 0;
+}
+.progress__bg {
+  width: 100%;
+  height: 6rpx;
+  border-radius: 2px;
+  background-color: #8F8F8F;
+}

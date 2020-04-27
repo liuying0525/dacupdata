@@ -1,0 +1,88 @@
+
+  <view class="testresult">
+    <view class="one">1</view>
+    <view class="one_one">
+      <view class="one_one_re">选择车型与购车城市</view>
+      <view class="one_one_mose">
+        <text class="di iconfont #icon-qiche"/>
+        <view class="csxds" bindtap="csxds_btn">
+          <text class="csx">车型</text>
+          <text class="dz">{{cx_name}}</text>
+          <text class="diw iconfont #icon-jiantou"/>
+        </view>
+      </view>
+      <view class="one_one_mose">
+        <text class="di iconfont #icon-dingwei1"/>
+        <view class="ds">
+          <text class="csx">城市</text>
+          <view class="dz">
+            <picker bindchange="changeCountry" value="{{countryIndex}}" range="{{city}}">
+              <view class="tui-picker-detail">{{country}}
+                <text class="diw iconfont #icon-jiantou"/>
+              </view>
+            </picker>
+
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <view class="one">2</view>
+    <view class="one_one">
+      <view class="one_one_re">您的户口所在地是？</view>
+      <view class="phone_selectd_nr">
+        <view class="phone_selectd_nr_list {{_numa == 0?'add_citying':' '}}" data-ide="0" data-numa="0" bindtap="clickNuma">
+          本地
+        </view>
+        <view class="phone_selectd_nr_list {{_numa == 1?'add_citying':' '}}" data-ide="1" data-numa="1" bindtap="clickNuma">
+          外地
+        </view>
+      </view>
+    </view>
+    <view class="one">3</view>
+    <view class="one_one">
+      <view class="one_one_re">您的住房状态是？</view>
+      <view class="phone_selectd_nr">
+        <view class="phone_selectd_nr_list {{_numc == 0?'add_citying':' '}}" data-ide="1" data-numc="0" bindtap="clickNumc">按揭
+        </view>
+        <view class="phone_selectd_nr_list {{_numc == 1?'add_citying':' '}}" data-ide="2" data-numc="1" bindtap="clickNumc">共有住宅
+        </view>
+        <view class="phone_selectd_nr_list {{_numc == 2?'add_citying':' '}}" data-ide="3" data-numc="2" bindtap="clickNumc">集体宿舍
+        </view>
+        <view class="phone_selectd_nr_list {{_numc == 3?'add_citying':' '}}" data-ide="4" data-numc="3" bindtap="clickNumc">亲属楼宇
+        </view>
+        <view class="phone_selectd_nr_list {{_numc == 4?'add_citying':' '}}" data-ide="5" data-numc="4" bindtap="clickNumc">直租
+        </view>
+        <view class="phone_selectd_nr_list {{_numc == 5?'add_citying':' '}}" data-ide="6" data-numc="5" bindtap="clickNumc">租房
+        </view>
+        <view class="phone_selectd_nr_list {{_numc == 6?'add_citying':' '}}" data-ide="0" data-numc="6" bindtap="clickNumc">其他
+        </view>
+        <view class="phone_selectd_nr_list leo_xinzeng">
+        </view>
+        <view class="phone_selectd_nr_list leo_xinzeng">
+        </view>
+      </view>
+    </view>
+    <view class="one">4</view>
+    <view class="one_one dsers">
+      <view class="one_one_re">您的月收入是？</view>
+      <view class="phone_selectd_nr">
+        <view class="phone_selectd_nr_list {{_numd == 0?'add_citying':' '}}" data-ide="1" data-numd="0" bindtap="clickNumd">1万以下
+        </view>
+        <view class="phone_selectd_nr_list {{_numd == 1?'add_citying':' '}}" data-ide="2" data-numd="1" bindtap="clickNumd">1万-1.5万
+        </view>
+        <view class="phone_selectd_nr_list {{_numd == 2?'add_citying':' '}}" data-ide="3" data-numd="2" bindtap="clickNumd">1.5万-2.0万
+        </view>
+        <view class="phone_selectd_nr_list {{_numd == 3?'add_citying':' '}}" data-ide="4" data-numd="3" bindtap="clickNumd">2.0万-2.5万
+        </view>
+        <view class="phone_selectd_nr_list {{_numd == 4?'add_citying':' '}}" data-ide="5" data-numd="4" bindtap="clickNumd">2.5万-3.0万
+        </view>
+        <view class="phone_selectd_nr_list {{_numd == 5?'add_citying':' '}}" data-ide="6" data-numd="5" bindtap="clickNumd">3.0万以上
+        </view>
+      </view>
+    </view>
+    <view class="sdsdsd"/>
+    <view class="zxkf" bindtap="submit_tj">
+      提交申请
+    </view>
+  </view>

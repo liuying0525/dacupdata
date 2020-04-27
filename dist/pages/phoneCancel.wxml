@@ -1,0 +1,15 @@
+
+    <view class="cancelSuccess">
+        <view class="successIcon">
+            <image src="{{url_link?url_link+'/cancelS.png':''}}"/>
+        </view>
+        <view class="successTitle">取消成功!</view>
+        <view class="successInfo">
+            如需重新申请，可进入修改手机号页面操作
+        </view>
+        <view class="earlyBtn" bindtap="goList">确定</view>
+        <view class="cancelBtn"/>
+        <view class="earlyInfo">
+            *如有疑问可联系<text style="color: #6044cb;" bindtap="makeCall" data-wpymakecall-a="400-920-7258">400-920-7258</text>咨询
+        </view>
+    </view>

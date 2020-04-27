@@ -1,0 +1,89 @@
+
+  <view class="repaymentBox">
+   <view class="swiper" style="{{url_link?'background:url('+url_link+'swiperbg.png) no-repeat top left / 100% 100%':''}}">
+    <swiper class="swipers" current="{{currentTab}}" duration="300" bindchange="switchTab" indicator-dots="{{true}}" circular="true" indicator-color="rgba(111,87,217,.33)" indicator-active-color="rgba(111,87,217,1)">
+        <block  wx:for="{{listData}}" wx:key="index">
+          <swiper-item>
+            <view class="swiperItem">
+              <view>{{item.CONTRACT_NBR}}</view>
+              <view class="car">
+                <image src="{{url_link?url_link+'originalCar.png':''}}" class="originalCar"/>
+                <view class="purpleshade" style="{{item.purpleshade?item.carWidth:'opacity:0;width:0'}}">
+                    <image src="{{url_link?url_link+'purpleCar.png':''}}" class="purpleCar"/>
+                </view>
+              </view>
+              <view class="swipertext">
+                <view>待还总额<text>¥{{item.total}}</text></view>
+                <view>*本金+利息+罚息</view>
+              </view>
+            </view>            
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+ 
+    <view class="dadeBox">
+      <view class="notice" wx-if="{{!!showModel.canSettle}}" bindtap="notice" data-wpynotice-a="{{showModel}}">
+        <image src="{{url_link?url_link+'notice.png':''}}" class="noticeicon"/>您的合同现在可以办理结清材料申请，前往办理 >
+      </view>  
+      <view class="dadeinfo">
+            <view class="dadetitle">贷款信息</view>
+             <view class="dadeitem">
+            <view>合同号：
+              <text>{{showModel.contractNo}}</text>
+            </view>
+            <view>车型：
+              <text>{{showModel.carmodelname}}</text>
+            </view>
+            <view>贷款金额：
+              <text>{{showModel.productpara}}元</text>
+            </view>
+            <view>贷款期数：
+              <text>{{showModel.term}}期</text>
+            </view>
+            <view>贷款利率：
+              <text>{{showModel.rate}}%</text>
+            </view>
+            <view>合同激活日
+              <text>{{showModel.startTime}}</text>
+            </view>
+             <view>合同到期日
+              <text>{{showModel.endTime}}</text>
+            </view>
+             <view>贷款手机号
+              <text>{{showModel.mobile}}</text>
+            </view>
+             <view>还款银行卡
+              <text>{{showModel.bankCardInfo}}</text>
+            </view>
+          </view>
+      </view>
+      <view class="dadeinfo table">
+        <view class="dadetitle">还款明细</view>
+        <view class="tr bg-w">
+          <view class="th">时间</view>
+          <view class="th">期数</view>         
+          <view class="th ">本息总额</view>
+          <view class="th ">状态</view>
+        </view>
+        <!-- <scroll-view scroll-y="true" lower-threshold="400" style="height:220rpx" bindscrolltolower="searchScrollLower"> -->
+          
+          <scroll-view scroll-y="true" lower-threshold="400" style="height:220rpx">
+        <block  wx:for="{{showModel.plans}}" wx:key="key">
+          <view class="tr {{item.statusName=='待还款'?'dhtr':item.statusName=='已还款'?'alreadytr':' '}}">
+            <view class="td">{{item.customerRentalDate}}</view>
+            <view class="td">{{item.customerRentalId}}</view>           
+            <view class="td">{{item.pmt}}</view>
+            <view class="td">{{item.statusName}}</view>
+          </view>
+        </block>
+        
+         <!-- <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> -->
+         <view class="loading complete">已加载全部</view>
+        </scroll-view>
+      </view>
+  </view>
+    <view class="noData" wx:if="{{noData_show}}">
+      <image src="{{url_link?url_link + 'noData.png':''}}" mode="aspectFit"/>
+    </view>
+  </view>

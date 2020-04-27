@@ -1,0 +1,71 @@
+
+    <view class="earlyList">
+        <view class="titles">
+            <view class="title {{state==0?'activeTitle':''}}" bindtap="changeState" data-wpychangestate-a="0">受理中</view>
+            <view class="title {{state==1?'activeTitle':''}}" bindtap="changeState" data-wpychangestate-a="1">已受理</view>
+            <view class="title {{state==2?'activeTitle':''}}" bindtap="changeState" data-wpychangestate-a="2">已取消</view>
+        </view>
+        <view class="earlyBox"  wx:for="{{list}}" wx:key="{{item.id}}">
+            <view class="earlyTime">提交时间  ：  {{item.createTime}}</view>
+            <view class="earlyItem">
+                <view class="textItem">姓名  :  {{parent_data.login_name}}</view>
+                <view class="textItem">手机号  :  {{parent_data.login_phone}}</view>
+                <view class="textItem">合同号：{{item.contractNo}}</view>
+                <view class="textItem">合同信息  :  {{item.carInfo }}</view>
+                <view class="textItem">提前还款时间  :  {{item.payDate}}</view>
+                <view class="textItem">提前还款金额  :  {{item.payAmount}}元</view>
+                     <view class="textItem itemType">
+                  <view>还款方式  ：  {{item.payMethod==1?'电汇对公汇款':'银行卡代扣'}}</view>
+                  <view class="itemState">
+                    <image src="{{url_link?url_link+ states[state]:''}}"/>
+                  </view>            
+                  </view>
+                <view class="textItem transfer" wx:if="{{item.payMethod==1}}">
+                  <view class="conents_lab">
+                    <label class="textitem_left">收款户名  :  <text selectable="true" bindlongtap="copy">{{name}}</text></label>
+                    <label class="textitem_copy" bindtap="copyBtn" data-copy="{{name}}">复制</label> 
+                  </view>
+                  <view class="conents_lab">
+                    <label class="textitem_left">收款账号  :  <text selectable="true" bindlongtap="copy">{{idCard}}</text></label>
+                    <label class="textitem_copy" bindtap="copyBtn" data-copy="{{idCard}}">复制</label> 
+                  </view> 
+                   <view class="conents_lab">
+                    <label class="textitem_left">支行信息  :  <text selectable="true" bindlongtap="copy">{{bankinfo}}</text></label>
+                    <label class="textitem_copy" bindtap="copyBtn" data-copy="{{bankinfo}}">复制</label> 
+                  </view>
+                </view>
+                    <view class="textItem schedule" wx:if="{{state==0 && !!item.actualPaymentAmount}}">
+                  <view>受理进度:</view> 
+                  <text class="conents_lab">已受理提前结清等待扣款中，最终报价为{{item.actualPaymentAmount}}，扣款日期{{item.actualPaymentTime}}。请于扣款日期当天17:00前根据最终报价完成存款/电汇，如对报价有异议或需更改结清还款方式，请及时致电400-920-7258</text>
+                </view> 
+                 <view class="textItem schedule" wx:if="{{state==1 && !!item.actualPaymentAmount}}">
+                  <view>受理进度:</view> 
+                  <text class="conents_lab">{{item.actualPaymentAmount}}元扣款成功，提前结清流程已完成</text>
+                </view> 
+
+                <view class="textItem" style="margin: 0;height:80rpx;padding: 30rpx 23rpx 0;" wx:if="{{item.status == 0}}">
+                    <text class="cancelBtn" bindtap="cancelSubmit" data-wpycancelsubmit-a="{{item.id}}">取消申请</text>
+                    <!--<text class="changeBtn editBtn" bindtap="edit({{item}})">修改申请</text>-->
+                </view>
+              
+                <view class="itemState">
+                    <image src="{{url_link?url_link+ states[state]:''}}"/>
+                </view>
+                       <view class="reOpen" wx:if="{{state == 1 && item.status==3}}" bindtap="edit" data-wpyedit-a="{{item}}">重新发起此申请</view>
+            <!-- <view class="reOpen noOpen" wx:if="{{state == 1 && item.status!=3}}">重新发起此申请</view> -->
+              <view class="reOpen" wx:if="{{state==1 && item.canSettle == 1}}" bindtap="paymentSubmit" data-wpypaymentsubmit-a="{{item}}">结清材料申请</view>
+            </view>
+              <view class="cancelReason" wx:if="{{state == 2}}">
+                <view class="textItem">取消类型  ：  {{item.cancelTypeStr}}</view>
+                <view class="textItem" style="margin-top: 28rpx;" wx:if="{{item.cancelType==2}}">取消原因  ：  {{item.cancelReason}}</view>
+            </view>
+            </view>
+      
+         
+        </view>
+        <view class="noData"  wx:if="{{noData_show}}">
+            <image src="{{url_link?url_link + '/noData.png':''}}" mode="aspectFit"/>
+            <view class="textInfo">您还没有申请记录哦</view>
+        </view>
+    
+    <view class="createOne {{iphoneX?'createOnePro':''}}" bindtap="addNewPost"  wx:if="{{!existProcessing}}"><text class="addIcon">+</text>新建申请</view>

@@ -1,0 +1,46 @@
+
+    <view class="phonePeople">
+        <view class="phonePeopleT">
+            <view class="title">个人信息填写</view>
+            <view class="textItem">
+                <text>姓名</text><input type="text" placeholder="请输入你的姓名" value="{{name}}" disabled data-name="name" bindinput="changeValue"/>
+            </view>
+            <view class="textItem">
+                <text>原手机号</text><input type="text" placeholder="请输入你填写合同时的手机号" disabled value="{{phone}}" data-name="phone" bindinput="changeValue"/>
+            </view>
+            <view class="textItem">
+                <text>身份证号</text><input type="text" placeholder="请输入你填写身份证号" disabled value="{{IdCard}}" data-name="IdCard" bindinput="changeValue"/>
+            </view>
+            <!--<view class="textItem" style="margin-bottom: 50rpx;">-->
+                <!--<text>合同信息</text><input type="text" placeholder="点击输入框获取" disabled value="{{contractnum}}" bindtap="getContracts" />-->
+                <!--<view class="textItemInfos" wx:if="{{contract_show}}">-->
+                    <!--<view class="textItemInfo" bindtap="selectContract({{item}})" wx:for="{{contracts}}">{{item.comments}} : {{item.externalContractNbr}}</view>-->
+                <!--</view>-->
+            <!--</view>-->
+            <view class="textItem">
+                <text>合同信息</text>
+                <picker value="{{contractnum}}" range="{{contracts}}" bindchange="selectContract">
+                    <view class="picker">
+                        <text class="earlyTime">{{contractnum}}</text>
+                    </view>
+                </picker>
+            </view>
+            <view class="textItem">
+                <text>新手机号</text><input type="text" placeholder="请输入新的手机号" value="{{newPhone}}" data-name="newPhone" bindinput="changeValue"/>
+            </view>
+            <view class="textItem">
+                <text>短信验证码</text>
+                <view class="getCode {{phoneCodeTime>0 || canTryTime>0?'getNoCode':''}}" bindtap="getCode">{{phoneCodeTime>0?phoneCodeTime+'s后可重新获取': '获取验证码'}}</view>
+                <input class="phoneCode" type="text" value="{{phoneCode}}" data-name="phoneCode" bindinput="changeValue"/>
+            </view>
+            <view class="textItem"  wx:if="{{picCode_show}}">
+                <text>图形验证码</text>
+                <view class="picCode">
+                    <image src="{{picCode_url}}" bindtap="getPic"/>
+                </view>
+                <input class="phoneCode" type="text" value="{{picCode}}" data-name="picCode" bindinput="changeValue"/>
+            </view>
+        </view>
+        <view class="{{canSubmit?'earlyBtn':'earlyNoBtn'}}" bindtap="submit">提交</view>
+        <view class="earlyInfo">*填写完整个人信息后才可修改手机号哦</view>
+    </view>

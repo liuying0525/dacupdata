@@ -1,0 +1,31 @@
+.table_content {
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 1.81rpx -1.81rpx 29.58rpx rgba(141, 169, 211, 0.32);
+}
+.table_list {
+  flex: 1;
+}
+.table_list {
+  font-size: 18.11rpx;
+  color: #000;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 48rpx;
+}
+.table_list_icon {
+  display: block;
+  width: 54rpx;
+  height: 41rpx;
+}

@@ -1,0 +1,35 @@
+
+  <view class="settlementBox">
+    <view  wx:if="{{!!list && list.length>0}}">
+      <view class="settlementList" wx:for="{{list}}" wx:key="id">
+        <!-- <view class="earlyTime">提交时间  ：  {{item.createTime}}</view> -->              
+        <view class="earlyStatut">
+          <view class="contractNo">{{item.externalContractNbr}}</view>
+          <view class="statut" bindtap="currentStatut" data-wpycurrentstatut-a="{{item}}">{{statutsEn[item.status]}}</view>             
+        </view>
+        <view class="earlyItem">
+            <view class="textItem">
+              <view>车型</view>
+              <text>{{item.comments}}</text>
+            </view>
+            <view class="textItem">
+              <view>合同到期日</view>
+                <text>{{item.contractEndDte}}</text> 
+            </view>                 
+            <view class="textItem">
+              <view>合同实结清日</view>
+              <text>{{item.contractMaturityDte}}</text>         
+            </view> 
+        </view>   
+    </view>
+    </view>
+    <view class="noData"  wx:if="{{noData_show}}">   
+      <image src="{{url_link?url_link + '/kong.png':''}}" mode="aspectFit"/>
+      <view class="textInfo">您当前暂无需要办理的合同</view>
+        <view>
+            <view>可办理条件，满足以下任意一种：</view>
+            <text>1：合同状态正常，并且离合同到期日10天内</text>
+            <text>2：2020-01-01后结清的合同，包含提前结清</text>
+        </view>
+    </view> 
+  </view>

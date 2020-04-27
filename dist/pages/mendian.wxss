@@ -1,0 +1,120 @@
+.order-te3e {
+  height: 60px;
+  padding-top: 20rpx;
+  padding-left: 30rpx;
+  border-bottom: 2rpx #eee solid;
+  box-sizing: border-box;
+}
+.order-te4 {
+  width: 80%;
+  font-size: 28rpx;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.order-te4 .juli {
+  position: absolute;
+  right: 15%;
+  color: #525252;
+}
+.order-te5 {
+  width: 80%;
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 15rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quian {
+  padding: 0 4%;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.di {
+  transform: scale(-1, -1);
+  margin-left: 20rpx;
+  font-size: 34rpx;
+  color: #555555;
+  position: relative;
+  display: inline-block;
+}
+.jl {
+  color: red;
+}
+.cs {
+  padding: 0 4%;
+  line-height: 25px;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  background: #eee;
+}
+.cs-di {
+  height: 60px;
+}
+.zxkf {
+  width: 100%;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  background: #6044ca;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+.right_sidebar {
+  display: block;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  overflow: hidden;
+}
+.right_sidebar_false {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: -100%;
+  width: 100%;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.menu-cont {
+  display: flex;
+}
+.menu-cont .menu-l {
+  flex: 0 0 160rpx;
+}
+.menu-cont .menu-l .city-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-color: #f0f1f5;
+}
+.menu-cont .menu-l .city-list .city-item {
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #757575;
+  background-color: #f0f1f5;
+}
+.menu-cont .menu-l .city-list .city-item.active {
+  color: #000;
+  background-color: #fff;
+}
+.menu-cont .menu-r {
+  flex: 1;
+}

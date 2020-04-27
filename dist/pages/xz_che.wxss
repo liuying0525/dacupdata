@@ -1,0 +1,481 @@
+.right_sidebar {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: 0;
+  width: 70%;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.right_sidebar_false {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: -100%;
+  width: 100%;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.sidebar {
+  width: 100%;
+  height: 100%;
+}
+.sidebar_yinying {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: all 0.2s;
+  -webkit-transition: opacity 0.2s;
+  opacity: 0;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.sidebar_yinying2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: all 0.2s;
+  -webkit-transition: opacity 0.2s;
+  opacity: 0.4;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.sidebar_right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  word-break: normal;
+  background-color: #ffffff;
+}
+.sidebar_bq {
+  width: clac(100% - 80rpx);
+  padding: 0 40rpx 0 40rpx;
+  height: 80rpx;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.sidebar_pp {
+  height: 80rpx;
+  font-size: 32rpx;
+}
+.sidebar_pp_logo {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  float: left;
+}
+.sidebar_pp {
+  display: block;
+  width: 50%;
+  height: 80rpx;
+  color: #434343;
+  line-height: 82rpx;
+  font-size: 28rpx;
+  float: left;
+  text-indent: 22rpx;
+}
+.sidebar_hui {
+  width: clac(100% - 60rpx);
+  padding: 0 30rpx 0 30rpx;
+  background-color: #f0f1f5;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #434343;
+}
+.sidebar_list {
+  width: clac(100% - 80rpx);
+  padding: 0 40rpx 0 40rpx;
+  height: 120rpx;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+  position: relative;
+  overflow: hidden;
+}
+.sidebar_list_left {
+  height: 80rpx;
+  padding: 20rpx 0 20rpx 0;
+  position: relative;
+  float: left;
+  width: 50%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.sidebar_list_title {
+  font-size: 28rpx;
+}
+.sidebar_list_rmb {
+  font-size: 22rpx;
+  color: #5c45c3;
+}
+.sidebar_list_right {
+  width: 120rpx;
+  height: 120rpx;
+  float: right;
+}
+.list_che {
+  width: 120rpx;
+  height: 120rpx;
+}
+.right_sidebar_false .sidebar_yinying {
+  opacity: 0;
+}
+.right_sidebar .sidebar_yinying {
+  opacity: 0.4;
+}
+.right_sidebar {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: 0;
+  width: 70%;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.right_sidebar_false {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: -100%;
+  width: 100%;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.sidebar {
+  width: 100%;
+  height: 100%;
+}
+.sidebar_yinying {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: all 0.2s;
+  -webkit-transition: opacity 0.2s;
+  opacity: 0;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.sidebar_yinying2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: all 0.2s;
+  -webkit-transition: opacity 0.2s;
+  opacity: 0.4;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.sidebar_right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  word-break: normal;
+  background-color: #ffffff;
+}
+.sidebar_bq_ck {
+  width: clac(100% - 80rpx);
+  padding: 0 40rpx 0 40rpx;
+  height: 80rpx;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.sidebar_pp {
+  height: 80rpx;
+  font-size: 32rpx;
+}
+.sidebar_pp_logo {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  float: left;
+}
+.sidebar_pp {
+  display: block;
+  width: 50%;
+  height: 80rpx;
+  color: #434343;
+  line-height: 82rpx;
+  font-size: 28rpx;
+  float: left;
+  text-indent: 22rpx;
+}
+.sidebar_hui_ck {
+  width: clac(100% - 60rpx);
+  padding: 0 30rpx 0 30rpx;
+  background-color: #ffffff;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #434343;
+}
+.sidebar_list_ck {
+  width: clac(100% - 80rpx);
+  padding: 0 40rpx 0 40rpx;
+  height: 120rpx;
+  background-color: #f0f1f5;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar_list_left_ck {
+  height: 80rpx;
+  padding: 20rpx 0 20rpx 0;
+  position: relative;
+  float: left;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.sidebar_list_title_ck {
+  font-size: 26rpx;
+  display: inline-block;
+}
+.sidebar_list_rmb_ck {
+  font-size: 26rpx;
+}
+.ck_list_right {
+  color: #5c45c3;
+  font-size: 26rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 0;
+}
+.sidebar_list_right {
+  width: 120rpx;
+  height: 120rpx;
+  float: right;
+}
+.list_che {
+  width: 120rpx;
+  height: 120rpx;
+}
+.right_sidebar_false .sidebar_yinying {
+  opacity: 0;
+}
+.right_sidebar .sidebar_yinying {
+  opacity: 0.4;
+}
+.ck_jiage {
+  line-height: 80rpx;
+}
+.ck_jiage .sidebar_list_title_ck {
+  font-size: 24rpx;
+  color: #727272;
+}
+.ck_jiage .ck_list_right {
+  font-size: 24rpx;
+}
+.icon-paixu {
+  font-size: 20rpx;
+  color: #000;
+  margin-left: 10rpx;
+}
+.right_sidebar_xz {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.right_sidebar_false {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  right: -100%;
+  width: 100%;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.sidebar {
+  width: 100%;
+  height: 100%;
+}
+.sidebar_yinying {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: all 0.2s;
+  -webkit-transition: opacity 0.2s;
+  opacity: 0;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.sidebar_yinying2 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  transition: all 0.2s;
+  -webkit-transition: opacity 0.2s;
+  opacity: 0.4;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.sidebar_right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  word-break: normal;
+  background-color: #f0f1f5;
+}
+.sidebar_bq_xz {
+  width: clac(100% - 40rpx);
+  padding: 0 20rpx 0 20rpx;
+  height: 80rpx;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.sidebar_pp {
+  height: 80rpx;
+}
+.sidebar_pp_logo {
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  float: left;
+}
+.sidebar_pp_xz {
+  display: block;
+  width: 50%;
+  height: 80rpx;
+  color: #434343;
+  line-height: 82rpx;
+  font-size: 28rpx;
+  float: left;
+  text-indent: 10rpx;
+}
+.sidebar_hui_xz {
+  width: clac(100% - 20rpx);
+  padding: 0 10rpx 0 10rpx;
+  background-color: #f0f1f5;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  color: #434343;
+}
+.sidebar_list_xz {
+  display: flex;
+  height: 120rpx;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+.sidebar_right_image {
+  width: 100rpx;
+  height: 75rpx;
+}
+.sidebar_list_left_xz {
+  flex: 2;
+  height: 80rpx;
+  padding: 20rpx 0 20rpx 0;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+}
+.sidebar_list_title {
+  font-size: 28rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.sidebar_list_rmb {
+  font-size: 22rpx;
+  color: #5c45c3;
+}
+.sidebar_list_right {
+  width: 120rpx;
+  height: 120rpx;
+  float: right;
+}
+.list_che {
+  width: 120rpx;
+  height: 120rpx;
+}
+.right_sidebar_false .sidebar_yinying {
+  opacity: 0;
+}
+.right_sidebar .sidebar_yinying {
+  opacity: 0.4;
+}
+.xz_cx {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  right: 0;
+}
+.xz_cx_false {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  right: -100%;
+}
+.right_sidebar_xz_right {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  right: 0;
+  width: 0;
+  z-index: 999999;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.right_sidebar_xz_right.right_sidebar_xz_right_touch {
+  width: 70%;
+}
+.ck_leo_width {
+  width: 77%;
+  word-wrap: break-word;
+}
+.leo_tc .sidebar_list_title {
+  color: red;
+}
+.leo_tc .sidebar_list_rmb {
+  color: red;
+}
+.sidebar_right_image_cont {
+  flex: 1;
+}
