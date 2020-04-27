@@ -289,7 +289,7 @@ export default class secLogin extends wepy.page {
       let that = this;
       var inter = setInterval(()=>{
       console.log("that.getCodeTime--=="+that.getCodeTime);
-      if(that.getCodeTime!=0 && that.getCodeTime<=60){//这样又会进入无线循环  我都说了初始值60就是有问题的。你看着，我试给你看
+      if(that.getCodeTime!=0 && that.getCodeTime<=60){
            
             if(that.isenter==0)
             {
